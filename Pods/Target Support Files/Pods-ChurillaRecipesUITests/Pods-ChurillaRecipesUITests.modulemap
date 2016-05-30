@@ -1,0 +1,6 @@
+framework module Pods_ChurillaRecipesUITests {
+  umbrella header "Pods-ChurillaRecipesUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
