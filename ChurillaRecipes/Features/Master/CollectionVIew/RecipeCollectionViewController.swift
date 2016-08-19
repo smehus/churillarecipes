@@ -17,9 +17,9 @@ internal final class RecipeCollectionViewController: UICollectionViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = CGSize(width: CGRectGetWidth(collectionView!.bounds), height: 100)
-        }
+//        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+//            layout.itemSize = CGSize(width: CGRectGetWidth(collectionView!.bounds), height: 100)
+//        }
     }
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

@@ -53,11 +53,20 @@ internal final class StackedParallaxLayout: UICollectionViewLayout {
             if indexPath.item == featuredItemIndex {
                 
                 let yOffset = standardHeight * nextItemPercentageOffset
+                y = collectionView!.contentOffset.y - yOffset
+                height = featuredHeight
                 
                 
             } else if indexPath.item == (featuredItemIndex + 1) && indexPath.item != numberOfItems {
-                
+                let maxY = y + standardHeight
+                height = standardHeight + max((featuredHeight - standardHeight) * nextItemPercentageOffset, 0)
+                y = maxY - height
             }
+            
+            frame = CGRect(x: 0, y: y, width: width, height: height)
+            attributes.frame = frame
+            y = CGRectGetMaxY(frame)
+            return attributes
             
         }
         
