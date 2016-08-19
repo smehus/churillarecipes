@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 import AmazonS3RequestManager
 
-let Bucket = "_"
-let AccessKey = "_what"
-let Secret = "_"
+let Bucket = "churillarecipes"
+let AccessKey = "AKIAJXTQYBC24IJQXKRQ"
+let Secret = "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"
 
 internal struct Amazon: ImageUploader {
     

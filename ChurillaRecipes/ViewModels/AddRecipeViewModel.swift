@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 import Alamofire
 
 internal final class AddRecipeViewModel: ViewModel {
@@ -48,13 +47,9 @@ internal final class AddRecipeViewModel: ViewModel {
         self.uploadRecipe(recipeImages, completion: completion, failed: failed)
     }
     
-    func uploadImage(image: UIImage, completed: (Result<(), ObjectError>) -> Void) {
-        uploader?.uploadImage(image, title: titleString + "\(recipeImages.count)", completion: { [weak self] (url) in
-                self?.recipeImages.append(url)
-                completed(Result.Success())
-            }, failure: { (reason) in
-                completed(Result.Failure(ObjectError.CustomError(error: reason)))
-        })
+    func nextViewModel() -> AddRecipePicturesViewModel {
+        guard let uploader = self.uploader else { fatalError() }
+        return AddRecipePicturesViewModel(store: store, uploader: uploader, recipe: RecipeFlyweight(title: titleString, description: descriptionString))
     }
     
     private func uploadRecipe(urls: [String], completion: () -> Void, failed: (err: ObjectError) -> Void) {

@@ -55,8 +55,8 @@ internal final class RecipeDetailViewController: UIViewController, ChurillaViewC
     private func uploadAndUpdate(photo: UIImage) {
         viewModel.uploadImageAndUpdateRecipe(photo, completed: { [weak self] _ in
             
-            }) { (message) in
-                self.showAlert("Oops", message: message)
+            }) { [weak self] (message) in
+                self?.showAlert("Oops", message: message)
         }
     }
 }

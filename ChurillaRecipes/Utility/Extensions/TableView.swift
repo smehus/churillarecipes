@@ -20,3 +20,14 @@ internal extension UITableView {
         return cell
     }
 }
+
+internal extension UICollectionView {
+    
+    func deqeueuReusableCellForIndex<T: ReusableCell>(indexPath: NSIndexPath) -> T {
+        guard let cell = self.dequeueReusableCellWithReuseIdentifier(T.reuseIdentifier, forIndexPath: indexPath) as? T else {
+            fatalError()
+        }
+        
+        return cell
+    }
+}

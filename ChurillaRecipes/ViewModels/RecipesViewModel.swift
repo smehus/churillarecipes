@@ -11,15 +11,26 @@ import Foundation
 internal final class RecipesViewModel: ViewModel {
     typealias StoreType = RecipeStore
     
+    let loading = Observable<Bool>(false)
+    var configFinished: Observable<Bool>?
+    
     private var recipes = [Recipe]()
     private let store: RecipeStore
+    
+    
+    init(store: StoreType, configDownload: Observable<Bool>) {
+        self.store = store
+        self.configFinished = configDownload
+    }
     
     init(store: StoreType) {
         self.store = store
     }
     
     func retrieveAllRecipes(success success:(() -> Void), failure:((ObjectError) -> Void)) {
+        loading.value = true
         store.retrieveRecipes { [weak self] (result) in
+            self?.loading.value = false
             switch result {
             case let .Success(recipes):
                 self?.recipes = recipes
@@ -40,6 +51,7 @@ internal final class RecipesViewModel: ViewModel {
         guard recipes.count >= (index.row - 1) else {
             fatalError("No recipe at index")
         }
+        
         return RecipeDetailViewModel(store: store, recipe: recipes[index.row], uploader: Amazon())
     }
     

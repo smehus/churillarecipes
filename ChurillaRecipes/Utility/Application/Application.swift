@@ -13,9 +13,11 @@ internal struct Application {
     
     let injector: AppInjector
     let splitControllerManager: SplitControllerManagerProtocol
+    let configStore: ConfigStore
     
     init() {
         injector = AppInjector()
+        configStore = injector.configStore()
         splitControllerManager = injector.splitControllerManager()
     }
     
@@ -31,7 +33,7 @@ internal struct Application {
         // Master Controller
         let leftNav = splitViewController.viewControllers.first as! UINavigationController
         let master = leftNav.topViewController as! RecipeCollectionViewController
-        master.viewModel = injector.recipesViewModel()
+        master.viewModel = injector.recipesViewModel(configStore.configFileDownload)
         
         // Detail Controller
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
@@ -41,6 +43,8 @@ internal struct Application {
         
         // Doesn't work to set the delegate to splitcontrollermanager for some reason.... test later
         splitViewController.delegate = delegate
+        
+        configStore.downloadConfig()
         
         return true
     }
