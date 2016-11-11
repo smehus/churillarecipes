@@ -646,7 +646,7 @@
             </objects>
             <point key="canvasLocation" x="1455" y="618"/>
         </scene>
-        <!--Add Finished Pictures View Controller-->
+        <!--Title-->
         <scene sceneID="3uQ-Jv-Dv8">
             <objects>
                 <viewController id="qKW-3X-iNZ" customClass="AddFinishedPicturesViewController" customModule="Churilla" customModuleProvider="target" sceneMemberID="viewController">
@@ -722,6 +722,15 @@
                             <constraint firstItem="P48-v1-78q" firstAttribute="top" secondItem="e9k-wU-kwN" secondAttribute="bottom" constant="20" id="p9h-HS-Cv2"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="F1R-Fi-baA">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="x6I-Gg-iiV">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="qKW-3X-iNZ" id="ptC-9m-k3Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="D1c-CJ-tRa" id="hAi-jT-fCQ"/>
                         <outlet property="infoLabel" destination="e9k-wU-kwN" id="9vg-fW-m24"/>

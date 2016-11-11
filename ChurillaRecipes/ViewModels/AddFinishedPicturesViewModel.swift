@@ -62,10 +62,10 @@ extension AddFinishedPicturesViewModel: DataSourceBinding {
     }
     
     func numberOfRowsForSection(_ section: Int) -> Int {
-        return recipe.recipeImages.count
+        return recipe.finishedImages.count
     }
     
     func viewModelForIndexPath(_ indexPath: IndexPath) -> CellViewModel {
-        return ImageCellViewModel(object: recipe.recipeImages[indexPath.row])
+        return ImageCellViewModel(object: recipe.finishedImages[indexPath.row])
     }
 }

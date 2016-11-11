@@ -51,6 +51,10 @@ internal final class AddFinishedPicturesViewController: UIViewController, Churil
     }
     
 
+    @IBAction fileprivate func saveButtonPressed(_ sender: AnyObject) {
+        
+    }
+    
     fileprivate func setupCollectionView() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
