@@ -674,22 +674,39 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D1c-CJ-tRa">
                                 <frame key="frameInset" minY="130" width="600" height="470"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Rn-uR-KRN">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="195" height="174"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4V2-tO-AuD">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="4V2-tO-AuD" customClass="ImageCell" customModule="Churilla" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="195" height="174"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="195" height="174"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kiJ-eo-WLa"/>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="kiJ-eo-WLa" secondAttribute="trailing" id="4CN-97-a0O"/>
+                                            <constraint firstItem="kiJ-eo-WLa" firstAttribute="top" secondItem="4V2-tO-AuD" secondAttribute="top" id="6qn-gp-jxF"/>
+                                            <constraint firstAttribute="bottom" secondItem="kiJ-eo-WLa" secondAttribute="bottom" id="e3k-4Y-z8T"/>
+                                            <constraint firstItem="kiJ-eo-WLa" firstAttribute="leading" secondItem="4V2-tO-AuD" secondAttribute="leading" id="kXm-KJ-bzG"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="kiJ-eo-WLa" id="LLW-xH-alc"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="qKW-3X-iNZ" id="FhT-gJ-9Lf"/>
+                                    <outlet property="delegate" destination="qKW-3X-iNZ" id="bql-CV-JnF"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -712,7 +729,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57z-xf-fBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1640" y="1294"/>
+            <point key="canvasLocation" x="1639.2" y="1293.1034482758621"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

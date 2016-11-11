@@ -91,7 +91,7 @@ extension AddFinishedPicturesViewController: UIImagePickerControllerDelegate, UI
                 case .failure(let error):
                     self?.showAlert("Failed to upload image", message: error.localizedDescription)
                 }
-                })
+            })
         }
     }
     
