@@ -9,20 +9,20 @@
 import Foundation
 import SwiftyJSON
 
-internal enum ObjectError: ErrorType {
-    case CustomError(error: String)
-    case MappingError
-    case NetworkError
-    case ResponseError(error: String)
-    case ValidationError(error: String)
+internal enum ObjectError: Error {
+    case customError(error: String)
+    case mappingError
+    case networkError
+    case responseError(error: String)
+    case validationError(error: String)
     
     var userFacingDescription: String {
         switch self {
-        case .MappingError: return "Failed to map objects"
-        case .NetworkError: return "Server failed"
-        case .ResponseError(let error): return error
-        case .CustomError(let error): return error
-        case .ValidationError(let error): return error
+        case .mappingError: return "Failed to map objects"
+        case .networkError: return "Server failed"
+        case .responseError(let error): return error
+        case .customError(let error): return error
+        case .validationError(let error): return error
         }
     }
     

@@ -53,30 +53,64 @@ let amazonS3Manager = AmazonS3RequestManager(bucket: myAmazonS3Bucket,
     secret: myAmazonS3Secret)
 ```
 
+### List Bucket Objects
+Gets a list of object in a bucket:
+
+```swift
+amazonS3Manager.listBucketObjects().responseS3Object { (response: Response<S3BucketObjectList, NSError>) in
+    if let files = response.result.value?.files {
+        for file in files {
+            print(file.path)
+        }
+    }
+}
+```
+
 ### Get Objects
 
 Getting Objects as Response Objects:
 
 ```swift
-amazonS3Manager.getObject("myFolder/fileName.jpg")
+amazonS3Manager.get(at: "myFolder/fileName.jpg")
 ```
 
 Saving Objects To File:
 
 ```swift
-let destination: NSURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-amazonS3Manager.downloadObject("myFolder/fileName.jpg", saveToURL: destination)
+let destination: NSURL = FileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+amazonS3Manager.download(at: "myFolder/fileName.jpg", to: destination)
 ```
     
+### Get Metadata
+Retrieve metadata from an object without returning the object itself:
+
+```swift
+amazonS3Manager.getMetaData(forObjectAt: "fileName.txt").responseS3MetaData { (response: Response<S3ObjectMetaData, NSError>) in
+    if let metaData = response.result.value?.metaData {
+        for objectMetaData in metaData {
+            print(objectMetaData)
+        }
+    }
+}
+```
+
 ### Upload Objects
 ```swift
 let fileURL: NSURL = NSURL(fileURLWithPath: "pathToMyObject")
-amazonS3Manager.putObject(fileURL, destinationPath: "pathToSaveObjectTo/fileName.jpg")
+amazonS3Manager.upload(from: fileURL, to: "pathToSaveObjectTo/fileName.jpg")
+```
+
+### Copy Objects
+```swift
+amazonS3Manager.copy(from: "demo.txt", to: "copy.txt").response { request, response, data, error in    
+    print(response)    
+    print(error)
+}
 ```
     
 ### Delete Objects
 ```swift
-amazonS3Manager.deleteObject("myFolder/fileName.jpg")
+amazonS3Manager.delete(at: "myFolder/fileName.jpg")
 ```
 
 ## Response Serialization
@@ -104,12 +138,12 @@ amazonS3Manager.getBucketACL()
 or for an object in the bucket with a `GET` request:
 
 ```swift
-amazonS3Manager.getACL(forObjectAtPath: "myFolder/fileName.jpg")
+amazonS3Manager.getACL(forObjectAt: "myFolder/fileName.jpg")
 ```
     
 ### Setting ACLs
 
-You can set the ACLs on the current bucket with a `PUT` request:
+You can set the ACLs on the current bucket with a `PUT` request: 
 
 ```swift
 amazonS3Manager.setBucketACL(AmazonS3PredefinedACL.Public)
@@ -118,7 +152,7 @@ amazonS3Manager.setBucketACL(AmazonS3PredefinedACL.Public)
 or on an object in the bucket with a `PUT` request:
 
 ```swift
-amazonS3Manager.setACL(forObjectAtPath: "myFolder/fileName.jpg", acl: AmazonS3PredefinedACL.Public)
+amazonS3Manager.setACL(acl: PredefinedACL.publicReadWrite, forObjectAt: "myFolder/fileName.jpg")
 ```
 
 The ACLs for an object can also be set while uploading by using the optional `acl` parameter.
@@ -148,3 +182,26 @@ let fullControlPermission = AmazonS3ACLPermissionGrant(permission: .FullControl,
 let customACL = AmazonS3CustomACL(grants: [readPermission, writePermission, fullControlPermission])
 amazonS3Manager.setBucketACL(customACL)
 ```
+
+#### 1.0.0 Migration
+
+Version 1.0.0 changes the names public classes and functions to adopt the recommended syntax from the Swift API Design Guidelines. The language version has also been updated to use Swift 3.0.
+
+- Removes `AmazonS3` prefix from some objects, classes, and enums.
+- `ACL` protocol method parameter name changed from `setACLHeaders(forRequest:)` to 'setACLHeaders(on:)`.
+- `PredefinedACL` case name changes
+	- `Private` -> `privateReadWrite`
+	- `Public` -> `publicReadWrite`	
+- Changed request method names on `AmazonS3RequestManager`.
+	- `getObject(path:)` -> `get(at:)`
+	- `downloadObject(path:saveToURL:)` -> `download(at:to:)`
+	- `putObject(fileURL:destinationPath:acl:metaData:storageClass:)` -> `upload(from:to:acl:metaData:storageClass:)`
+	- `putObject(data:destinationPath:acl:metaData:storageClass:)` -> `upload(_:to:acl:metaData:storageClass:)`
+	- `headObject(path:)` -> `getMetaData(forObjectAt:)`
+	- `copyObject(_:destinationPath:)` -> `copy(from:to:)`
+	- `deleteObject(_:)` -> `delete(at:)`
+	- `getACL(forObjectAtPath:)` -> `getACL(forObjectAt:)`
+	- `setACL(forObjectAtPath:acl:)` -> `setACL(_:forObjectAt:)`
+- Alamofire now uses a `DownloadFileDestination` to configure the destination for download requests. You will need to migrate all download requests to use this time, rather than just the destination URL.
+
+

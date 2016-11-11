@@ -11,9 +11,9 @@ import UIKit
 
 internal extension UITableView {
     
-    func dequeueReusableCellForIndex<T: ReusableCell>(indexPath: NSIndexPath) -> T {
+    func dequeueReusableCellForIndex<T: ReusableCell>(_ indexPath: IndexPath) -> T {
         
-        guard let cell = self.dequeueReusableCellWithIdentifier(T.reuseIdentifier, forIndexPath: indexPath) as? T else {
+        guard let cell = self.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError()
         }
         
@@ -23,8 +23,8 @@ internal extension UITableView {
 
 internal extension UICollectionView {
     
-    func deqeueuReusableCellForIndex<T: ReusableCell>(indexPath: NSIndexPath) -> T {
-        guard let cell = self.dequeueReusableCellWithReuseIdentifier(T.reuseIdentifier, forIndexPath: indexPath) as? T else {
+    func deqeueuReusableCellForIndex<T: ReusableCell>(_ indexPath: IndexPath) -> T {
+        guard let cell = self.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError()
         }
         

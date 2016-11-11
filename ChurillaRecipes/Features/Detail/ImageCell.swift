@@ -11,15 +11,15 @@ import AFNetworking
 
 internal final class ImageCell: UICollectionViewCell, ReusableCell {
     
-    var image: NSURL? {
+    var image: Foundation.URL? {
         didSet {
             guard let url = image else {
                 return
             }
             
-            imageView.setImageWithURL(url, placeholderImage: UIImage(named: "placeholder"))
+            imageView.setImageWith(url, placeholderImage: UIImage(named: "placeholder"))
         }
     }
     
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet fileprivate weak var imageView: UIImageView!
 }

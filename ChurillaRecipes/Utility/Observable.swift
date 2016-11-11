@@ -15,7 +15,7 @@ internal struct Listener<T> {
 
 internal final class Observable<T> {
     
-    private var observers = [Listener<T>]()
+    fileprivate var observers = [Listener<T>]()
     
     var value: T {
         didSet {
@@ -27,7 +27,7 @@ internal final class Observable<T> {
         value = v
     }
     
-    func startListening(observer: AnyObject, event: (T) -> Void) {
+    func startListening(_ observer: AnyObject, event: @escaping (T) -> Void) {
         let listener = Listener(observer: observer, event: event)
         observers.append(listener)
     }

@@ -24,24 +24,24 @@ internal final class StackedParallaxLayout: UICollectionViewLayout {
     
     
     /* Return the size of all the content in the collection view */
-    override func collectionViewContentSize() -> CGSize {
+    override var collectionViewContentSize : CGSize {
         let contentHeight = (CGFloat(numberOfItems) * dragOffset) + (height + dragOffset)
         return CGSize(width: width, height: contentHeight)
     }
     
-    override func prepareLayout() {
-        layoutCache.removeAll(keepCapacity: false)
+    override func prepare() {
+        layoutCache.removeAll(keepingCapacity: false)
         
         let standardHeight = LayoutConstants.Cell.standardHeight
         let featuredHeight = LayoutConstants.Cell.featuredHeight
         
-        var frame = CGRectZero
+        var frame = CGRect.zero
         var y: CGFloat = 0
         
         layoutCache = (0..<numberOfItems).map { itemIndex in
-            
-            let indexPath = NSIndexPath(forItem: itemIndex, inSection: 0)
-            let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+        
+            let indexPath = IndexPath(item: itemIndex, section: 0)
+            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             
             /// This stacks the cell before on top of the cell after
             /// zIndex places the view on the z axis - so above or below another view
@@ -59,7 +59,7 @@ internal final class StackedParallaxLayout: UICollectionViewLayout {
                 /// 100 * 0-1 aka -> 100 * 0.4 = 40
                 /// percentage of standard height
                 let yOffset = standardHeight * nextItemPercentageOffset
-                1
+                
                 // This will push up the current featured cell up
                 // until it reaches 100 points above the current top of the tablevview
                 // So half the cell is above the screen & half is still on screen
@@ -79,7 +79,7 @@ internal final class StackedParallaxLayout: UICollectionViewLayout {
             
             frame = CGRect(x: 0, y: y, width: width, height: height)
             attributes.frame = frame
-            y = CGRectGetMaxY(frame)
+            y = frame.maxY
             return attributes
             
         }
@@ -87,24 +87,30 @@ internal final class StackedParallaxLayout: UICollectionViewLayout {
     }
     
     /* Return all attributes in the cache whose frame intersects with the rect passed to the method */
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         for attributes in layoutCache {
-            if CGRectIntersectsRect(attributes.frame, rect) {
+            
+            if attributes.frame.intersects(rect) {
                 layoutAttributes.append(attributes)
             }
+            
+            // swift 2.0
+//            if CGRectIntersectsRect(attributes.frame, rect) {
+//                layoutAttributes.append(attributes)
+//            }
         }
         
         return layoutAttributes
     }
     
     /* Return true so that the layout is continuously invalidated as the user scrolls */
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
     
     
-    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         let itemIndex = round(proposedContentOffset.y / dragOffset)
         let yOffset = itemIndex * dragOffset
         return CGPoint(x: 0, y: yOffset)
@@ -137,15 +143,15 @@ extension StackedParallaxLayout {
     }
     
     var width: CGFloat {
-        return CGRectGetWidth(collectionView!.bounds)
+        return collectionView!.bounds.width
     }
     
     var height: CGFloat {
-        return CGRectGetHeight(collectionView!.bounds)
+        return collectionView!.bounds.height
     }
     
     var numberOfItems: Int {
-        return collectionView!.numberOfItemsInSection(0)
+        return collectionView!.numberOfItems(inSection: 0)
     }
     
 }

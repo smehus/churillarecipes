@@ -17,10 +17,10 @@ private struct Paths {
 
 internal struct FileManager {
     
-    private let fileManager = NSFileManager.defaultManager()
+    fileprivate let fileManager = Foundation.FileManager.default
     
-    private var documentsDirectory: NSURL {
-        let urls = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+    fileprivate var documentsDirectory: Foundation.URL {
+        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         guard let directory = urls.first else {
             fatalError()
         }
@@ -29,18 +29,18 @@ internal struct FileManager {
     }
     
 
-    func cacheFile(file: Archivable) {
+    func cacheFile(_ file: Archivable) {
         
-        if fileManager.fileExistsAtPath(file.path().path!) {
+        if fileManager.fileExists(atPath: file.path().path) {
             do {
-                try fileManager.removeItemAtPath(Paths.configFilePath)
+                try fileManager.removeItem(atPath: Paths.configFilePath)
             } catch {
                 fatalError()
             }
         }
         
         do {
-            try file.archived().writeToURL(file.path(), options: .AtomicWrite)
+            try file.archived().write(to: file.path(), options: .atomicWrite)
         } catch {
             fatalError()
         }

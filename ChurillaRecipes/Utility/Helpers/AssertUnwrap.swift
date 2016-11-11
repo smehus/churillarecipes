@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal func assertUnwrap<T>(@noescape validator: () -> T?) -> T {
+internal func assertUnwrap<T>(_ validator: () -> T?) -> T {
     guard let value = validator() else {
         fatalError("Object doesn't exist")
     }

@@ -19,49 +19,49 @@ internal struct RecipeStore: Store {
         self.apiEnv = environment
     }
     
-    func retrieveRecipes(completion: Result<[Recipe], ObjectError> -> Void) -> Bool {
-        let router = RecipeRouter(endPoint: .AllRecipes)
+    func retrieveRecipes(_ completion: @escaping (Result<[Recipe]>) -> Void) -> Bool {
+        let router = RecipeRouter(endPoint: .allRecipes)
         let _ = apiEnv.executeRequest(router) { (result) in
             
             switch result {
-            case .Success(_):
+            case .success(_):
                 do {
                     let objects: [Recipe] = try result.parseValue()
-                    completion(Result.Success(objects))
+                    completion(Result.success(objects))
                 } catch {
-                    completion(Result.Failure(.MappingError))
+                    completion(Result.failure(ObjectError.mappingError))
                 }
                 
-            case .Failure(let error):
-                completion(Result.Failure(error))
+            case .failure(let error):
+                completion(Result.failure(error))
             }
         }
         
         return true
     }
     
-    func addRecipe(recipe: Recipe, completion: Result<(), ObjectError> -> Void) {
-        let router = RecipeRouter(endPoint: .AddRecipe(recipe: recipe))
+    func addRecipe(_ recipe: Recipe, completion: @escaping (Result<()>) -> Void) {
+        let router = RecipeRouter(endPoint: .addRecipe(recipe: recipe))
         let _ = apiEnv.executeRequest(router) { result in
             
             switch result {
-            case .Success(_):
-                completion(Result.Success())
-            case .Failure(let error):
-                completion(Result.Failure(error))
+            case .success(_):
+                completion(Result.success())
+            case .failure(let error):
+                completion(Result.failure(error))
             }
         }
     }
     
-    func addFinishedImageToRecipe(recipe: Recipe, imageURL: String, completion: Result<(), ObjectError> -> Void) {
-        let router = RecipeRouter(endPoint: .AddFinishedImage(recipe: recipe, url: imageURL))
+    func addFinishedImageToRecipe(_ recipe: Recipe, imageURL: String, completion: @escaping (Result<()>) -> Void) {
+        let router = RecipeRouter(endPoint: .addFinishedImage(recipe: recipe, url: imageURL))
         let _ = apiEnv.executeRequest(router) { result in
             print("\(result.value)")
             switch result {
-            case .Success(_):
-                completion(Result.Success())
-            case .Failure(let error):
-                completion(Result.Failure(error))
+            case .success(_):
+                completion(Result.success())
+            case .failure(let error):
+                completion(Result.failure(error))
             }
         }
     }

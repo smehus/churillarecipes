@@ -27,58 +27,58 @@ internal struct Amazon: ImageUploader {
     
     
     init() {
-        amazonS3Manager.setBucketACL(AmazonS3PredefinedACL.Public)
+        let _ = amazonS3Manager.setBucketACL(PredefinedACL.bucketOwnerFullControl)
     }
     
-    func uploadImages(images: [UIImage], title: String, completion: (urls: [String]) -> Void, failure: (reason: String) -> Void) {
+    func uploadImages(_ images: [UIImage], title: String, completion: @escaping (_ urls: [String]) -> Void, failure: @escaping (_ reason: String) -> Void) {
         var imageUrls = [String]()
-        for (index, image) in images.enumerate() {
+        for (index, image) in images.enumerated() {
             if let pngData = UIImagePNGRepresentation(image) {
                 let path = "\(title.removeSpaces())_\(index).png"
                
-                amazonS3Manager.putObject(pngData, destinationPath: path, acl: AmazonS3PredefinedACL.PublicReadOnly).responseS3Data({ (response) in
+                amazonS3Manager.upload(pngData, to: path, acl: PredefinedACL.publicReadOnly).responseS3Data(completion: { (response) in
                     if response.result.isFailure {
-                        failure(reason: response.result.description)
+                        failure(response.result.description)
                     }
                     
                      imageUrls.append("\(self.baseUrl)\(path)")
                     if index == images.count - 1 && response.result.isSuccess {
-                        completion(urls: imageUrls)
+                        completion(imageUrls)
                     }
                 })
             }
         }
     }
     
-    func uploadImage(image: UIImage, title: String, completion: (url: String) -> Void, failure: (reason: String) -> Void) {
+    func uploadImage(_ image: UIImage, title: String, completion: @escaping (_ url: String) -> Void, failure: @escaping (_ reason: String) -> Void) {
         
         if let pngData = UIImagePNGRepresentation(image) {
             let path = "\(title.removeSpaces()).png"
     
-            amazonS3Manager.putObject(pngData, destinationPath: path, acl: AmazonS3PredefinedACL.PublicReadOnly).responseS3Data({ (response) in
+            amazonS3Manager.upload(pngData, to: path, acl: PredefinedACL.publicReadOnly).responseS3Data(completion: { (response) in
                 print("IMAGE UPLOAD RETURN")
                 switch response.result {
-                case .Success:
-                    completion(url: "\(self.baseUrl)\(path)")
-                case .Failure(let error):
-                    failure(reason: error.localizedDescription)
+                case .success:
+                    completion("\(self.baseUrl)\(path)")
+                case .failure(let error):
+                    failure(error.localizedDescription)
                 }
                 
             })
         }
     }
     
-    private func resizeImage(image: UIImage) -> UIImage {
-        let size = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(0.2, 0.2))
+    fileprivate func resizeImage(_ image: UIImage) -> UIImage {
+        let size = image.size.applying(CGAffineTransform(scaleX: 0.2, y: 0.2))
         let hasAlpha = false
         let scale: CGFloat = 0.0
         
         UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
-        image.drawInRect(CGRect(origin: CGPointZero, size: size))
+        image.draw(in: CGRect(origin: CGPoint.zero, size: size))
         
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return scaledImage
+        return scaledImage!
     }
     
 }

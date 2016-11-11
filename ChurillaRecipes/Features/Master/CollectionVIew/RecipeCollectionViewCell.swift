@@ -10,13 +10,13 @@ import UIKit
 
 internal final class RecipeCollectionViewCell: UICollectionViewCell, ReusableCell {
     
-    var recipeImageURL: NSURL? {
+    var recipeImageURL: Foundation.URL? {
         didSet {
             guard let url = recipeImageURL else {
                 return
             }
             
-            recipeImageView.setImageWithURL(url)
+            recipeImageView.setImageWith(url)
         }
     }
     
@@ -27,28 +27,28 @@ internal final class RecipeCollectionViewCell: UICollectionViewCell, ReusableCel
         }
     }
     
-    @IBOutlet private weak var recipeTitleLabel: UILabel!
-    @IBOutlet private weak var imageOverlay: UIView!
-    @IBOutlet private weak var recipeImageView: UIImageView!
+    @IBOutlet fileprivate weak var recipeTitleLabel: UILabel!
+    @IBOutlet fileprivate weak var imageOverlay: UIView!
+    @IBOutlet fileprivate weak var recipeImageView: UIImageView!
 }
 
 extension RecipeCollectionViewCell {
     
-    override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
-        super.applyLayoutAttributes(layoutAttributes)
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
         
         let standardHeight = LayoutConstants.Cell.standardHeight
         let featuredHeight = LayoutConstants.Cell.featuredHeight
         
         ///  determines the percentage of the height change from the standard height to the featured height
-        let delta = 1 - ((featuredHeight - CGRectGetHeight(frame)) / (featuredHeight - standardHeight))
+        let delta = 1 - ((featuredHeight - frame.height) / (featuredHeight - standardHeight))
         
         let minAlpha: CGFloat = 0.3
         let maxAlpha: CGFloat = 0.75
         imageOverlay.alpha = maxAlpha - (delta * (maxAlpha - minAlpha))
         
         let scale = max(delta, 0.5)
-        recipeTitleLabel.transform = CGAffineTransformMakeScale(scale, scale)
+        recipeTitleLabel.transform = CGAffineTransform(scaleX: scale, y: scale)
         
     }
 }

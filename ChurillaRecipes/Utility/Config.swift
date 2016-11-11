@@ -18,9 +18,9 @@ internal final class Config: NSObject, NSCoding, Archivable, Object {
     init(json: JSON) throws {
         guard let
             bucket: String = json["bucket"].string,
-            secret: String = json["secret"].string,
-            key: String = json["accessKey"].string else {
-                throw ObjectError.MappingError
+            let secret: String = json["secret"].string,
+            let key: String = json["accessKey"].string else {
+                throw ObjectError.mappingError
         }
         
         self.bucket = bucket
@@ -33,32 +33,32 @@ internal final class Config: NSObject, NSCoding, Archivable, Object {
     }
     
     static func path() -> URL {
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let urls = Foundation.FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         guard let directory = urls.first else {
             fatalError()
         }
         
-        return directory.URLByAppendingPathComponent("/config")
+        return directory.appendingPathComponent("/config") as URL
     }
     
     func path() -> URL {
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let urls = Foundation.FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         guard let directory = urls.first else {
             fatalError()
         }
         
-        return directory.URLByAppendingPathComponent("/config")
+        return directory.appendingPathComponent("/config") as URL
     }
     
-    func archived() -> NSData {
-        return NSKeyedArchiver.archivedDataWithRootObject(self)
+    func archived() -> Foundation.Data {
+        return NSKeyedArchiver.archivedData(withRootObject: self)
     }
 
     init?(coder aDecoder: NSCoder) {
         guard let
-            bucket = aDecoder.decodeObjectForKey("bucket") as? String,
-            secret = aDecoder.decodeObjectForKey("secret") as? String,
-            accessKey = aDecoder.decodeObjectForKey("accessKey") as? String else {
+            bucket = aDecoder.decodeObject(forKey: "bucket") as? String,
+            let secret = aDecoder.decodeObject(forKey: "secret") as? String,
+            let accessKey = aDecoder.decodeObject(forKey: "accessKey") as? String else {
                 return nil
         }
         
@@ -67,9 +67,9 @@ internal final class Config: NSObject, NSCoding, Archivable, Object {
         self.accessKey = accessKey
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(bucket, forKey: "bucket")
-        aCoder.encodeObject(secret, forKey: "secret")
-        aCoder.encodeObject(accessKey, forKey: "accessKey")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(bucket, forKey: "bucket")
+        aCoder.encode(secret, forKey: "secret")
+        aCoder.encode(accessKey, forKey: "accessKey")
     }
 }

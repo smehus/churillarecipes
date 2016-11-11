@@ -16,8 +16,8 @@ internal final class AddRecipePicturesViewController: UIViewController, Churilla
 
     var viewModel: AddRecipePicturesViewModel!
     
-    @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var infoLabel: UILabel!
+    @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var infoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +25,9 @@ internal final class AddRecipePicturesViewController: UIViewController, Churilla
         setupCollectionView()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Identifiers.FinishedPicturesSegue.rawValue {
-            guard let controller = segue.destinationViewController as? AddFinishedPicturesViewController else {
+            guard let controller = segue.destination as? AddFinishedPicturesViewController else {
                 return
             }
             
@@ -35,61 +35,61 @@ internal final class AddRecipePicturesViewController: UIViewController, Churilla
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
-    private func setupCollectionView() {
+    fileprivate func setupCollectionView() {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .Horizontal
+        flowLayout.scrollDirection = .horizontal
         collectionView.setCollectionViewLayout(flowLayout, animated: true)
     }
     
     
-    @IBAction private func addButtonPressed(sender: AnyObject) {
+    @IBAction fileprivate func addButtonPressed(_ sender: AnyObject) {
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
             
-            let action = UIAlertController(title: "", message: "", preferredStyle: .ActionSheet)
-            let camera = UIAlertAction(title: "Take Photo", style: .Default) { (action) in
-                picker.sourceType = .Camera
-                self.presentViewController(picker, animated: true, completion: nil)
+            let action = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+            let camera = UIAlertAction(title: "Take Photo", style: .default) { (action) in
+                picker.sourceType = .camera
+                self.present(picker, animated: true, completion: nil)
             }
             
-            let libraray = UIAlertAction(title: "Library", style: .Default) { (action) in
-                picker.sourceType = .PhotoLibrary
-                self.presentViewController(picker, animated: true, completion: nil)
+            let libraray = UIAlertAction(title: "Library", style: .default) { (action) in
+                picker.sourceType = .photoLibrary
+                self.present(picker, animated: true, completion: nil)
             }
             
             action.addAction(camera)
             action.addAction(libraray)
-            presentViewController(action, animated: true, completion: nil)
+            present(action, animated: true, completion: nil)
         } else {
-            picker.sourceType = .PhotoLibrary
-            self.presentViewController(picker, animated: true, completion: nil)
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: true, completion: nil)
         }
     }
     
 }
 
 extension AddRecipePicturesViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        dismissViewControllerAnimated(true) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        dismiss(animated: true) {
             self.viewModel.uploadImage(image, completed: { [weak self] (result) in
                 switch result {
-                case .Success:
+                case .success:
                     self?.collectionView.reloadData()
-                case .Failure(let error):
-                    self?.showAlert("Failed to upload image", message: error.userFacingDescription)
+                case .failure(let error):
+                    self?.showAlert("Failed to upload image", message: error.localizedDescription)
                 }
             })
         }
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -99,15 +99,15 @@ extension AddRecipePicturesViewController: UICollectionViewDelegate {
 
 extension AddRecipePicturesViewController: UICollectionViewDataSource {
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.numberOfSections
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfRowsForSection(section)
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCell = collectionView.dequeueCollectionCellForIndex(indexPath)
         let model = viewModel.viewModelForIndexPath(indexPath)
         cell.image = model.imageUrl

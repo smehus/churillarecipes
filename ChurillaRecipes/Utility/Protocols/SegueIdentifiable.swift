@@ -15,6 +15,6 @@ internal protocol SegueIdentifiable {
 
 extension SegueIdentifiable where Self: UIViewController {
     static var segueIdentifier: String {
-        return String(self)
+        return String(describing: self)
     }
 }

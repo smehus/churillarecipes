@@ -18,12 +18,12 @@ internal struct RecipeCellViewModel: CellViewModel {
         return recipe.description
     }
     
-    var imageURL: NSURL {
-        return recipe.recipeImages.first?.imageURL ?? NSURL()
+    var imageURL: URL? {
+        return recipe.recipeImages.first?.imageURL
     }
     
     typealias ObjectType = Recipe
-    private let recipe: Recipe
+    fileprivate let recipe: Recipe
     init(object: ObjectType) {
         self.recipe = object
     }

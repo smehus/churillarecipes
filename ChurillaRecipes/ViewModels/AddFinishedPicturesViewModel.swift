@@ -11,9 +11,9 @@ import Foundation
 internal final class AddFinishedPicturesViewModel: ViewModel {
     typealias StoreType = RecipeStore
     
-    private let store: RecipeStore
-    private let uploader: ImageUploader?
-    private var recipeImages = [String]()
+    fileprivate let store: RecipeStore
+    fileprivate let uploader: ImageUploader?
+    fileprivate var recipeImages = [String]()
     
     init(store: StoreType, uploader: ImageUploader) {
         self.store = store

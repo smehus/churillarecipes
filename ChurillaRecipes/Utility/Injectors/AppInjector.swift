@@ -22,7 +22,7 @@ internal struct AppInjector {
         return RecipeStore(environment: apiManager())
     }
     
-    func recipesViewModel(download: Observable<Bool>) -> RecipesViewModel {
+    func recipesViewModel(_ download: Observable<Bool>) -> RecipesViewModel {
         return RecipesViewModel(store: recipeStore(), configDownload: download)
     }
     
@@ -34,7 +34,7 @@ internal struct AppInjector {
         return ConfigStore(environment: apiManager())
     }
     
-    private func imageUploader() -> Amazon {
+    fileprivate func imageUploader() -> Amazon {
         return Amazon()
     }
     

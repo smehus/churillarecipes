@@ -24,15 +24,15 @@ extension UIView {
         }
     }
     
-    func showActivitySpinner(style: UIActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge) {
+    func showActivitySpinner(_ style: UIActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge) {
         
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: style)
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
         addSubview(spinner)
-        let y = spinner.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor)
-        let x = spinner.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor)
-        NSLayoutConstraint.activateConstraints([x, y])
+        let y = spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        let x = spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        NSLayoutConstraint.activate([x, y])
         
         activitySpinner = spinner
     }

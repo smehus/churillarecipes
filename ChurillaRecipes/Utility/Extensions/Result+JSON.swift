@@ -15,15 +15,15 @@ let Items = "items"
 
 extension Result {
     
-    func parseValue<T where T: Object>() throws -> T {
+    func parseValue<T>() throws -> T where T: Object {
         guard let json = value as? JSON else {
-            throw ObjectError.CustomError(error: "Result value is not JSON")
+            throw ObjectError.customError(error: "Result value is not JSON")
         }
         
         do {
             return try T(json: json[Items])
         } catch {
-            throw ObjectError.MappingError
+            throw ObjectError.mappingError
         }
     }
     

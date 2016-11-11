@@ -21,11 +21,11 @@ internal final class AddRecipeViewModel: ViewModel {
     }
     
     var pictureButtonColor: UIColor {
-        return (pictureButtonActive) ? UIColor.blueColor() : UIColor.blueColor().colorWithAlphaComponent(0.8)
+        return (pictureButtonActive) ? UIColor.blue : UIColor.blue.withAlphaComponent(0.8)
     }
     
-    private let store: RecipeStore
-    private let uploader: ImageUploader?
+    fileprivate let store: RecipeStore
+    fileprivate let uploader: ImageUploader?
     
     init(store: StoreType, uploader: ImageUploader) {
         self.store = store
@@ -37,10 +37,10 @@ internal final class AddRecipeViewModel: ViewModel {
         self.uploader = nil
     }
     
-    func saveRecipe(completion: () -> Void, failed: (err: ObjectError) -> Void) {
+    func saveRecipe(_ completion: @escaping () -> Void, failed: @escaping (_ err: ObjectError) -> Void) {
         
         guard recipeImages.count > 0 && titleString.characters.count > 0 else {
-            failed(err: ObjectError.ValidationError(error: "Please fill out title and add a picture"))
+            failed(ObjectError.validationError(error: "Please fill out title and add a picture"))
             return
         }
         
@@ -52,19 +52,19 @@ internal final class AddRecipeViewModel: ViewModel {
         return AddRecipePicturesViewModel(store: store, uploader: uploader, recipe: RecipeFlyweight(title: titleString, description: descriptionString))
     }
     
-    private func uploadRecipe(urls: [String], completion: () -> Void, failed: (err: ObjectError) -> Void) {
+    fileprivate func uploadRecipe(_ urls: [String], completion: @escaping () -> Void, failed: @escaping (_ err: ObjectError) -> Void) {
         let params = createRecipeObject(titleString, description: descriptionString, imageURLs: urls)
         store.addRecipe(params) { (result) in
             switch result {
-            case .Success(_):
+            case .success(_):
                 completion()
-            case let .Failure(err):
-                failed(err: err)
+            case let .failure(err):
+                break
             }
         }
     }
     
-    private func createRecipeObject(title: String, description: String, imageURLs: [String]) -> Recipe {
+    fileprivate func createRecipeObject(_ title: String, description: String, imageURLs: [String]) -> Recipe {
         let images = imageURLs.map {
             return Image(imageUrlString: $0)
         }
@@ -80,11 +80,11 @@ extension AddRecipeViewModel: DataSourceBinding {
         return 1
     }
     
-    func numberOfRowsForSection(section: Int) -> Int {
+    func numberOfRowsForSection(_ section: Int) -> Int {
         return recipeImages.count
     }
     
-    func viewModelForIndexPath(indexPath: NSIndexPath) -> CellViewModel {
+    func viewModelForIndexPath(_ indexPath: IndexPath) -> CellViewModel {
         return ImageCellViewModel(object: Image(imageUrlString: recipeImages[indexPath.row]))
     }
 }

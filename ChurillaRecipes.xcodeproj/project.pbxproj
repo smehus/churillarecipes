@@ -564,12 +564,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65C492841CFB866400E47F83 /* Build configuration list for PBXNativeTarget "ChurillaRecipes" */;
 			buildPhases = (
-				BB8211B08F0A78DD66BA3E34 /* 📦 Check Pods Manifest.lock */,
+				BB8211B08F0A78DD66BA3E34 /* [CP] Check Pods Manifest.lock */,
 				65C492561CFB866400E47F83 /* Sources */,
 				65C492571CFB866400E47F83 /* Frameworks */,
 				65C492581CFB866400E47F83 /* Resources */,
-				9549EA8BDC7BCAE7C905F1C4 /* 📦 Embed Pods Frameworks */,
-				A57D4AC442457BDB024742DE /* 📦 Copy Pods Resources */,
+				9549EA8BDC7BCAE7C905F1C4 /* [CP] Embed Pods Frameworks */,
+				A57D4AC442457BDB024742DE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -584,12 +584,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65C492871CFB866400E47F83 /* Build configuration list for PBXNativeTarget "ChurillaRecipesTests" */;
 			buildPhases = (
-				9F65D32C5E0A49E1A20C8C92 /* 📦 Check Pods Manifest.lock */,
+				9F65D32C5E0A49E1A20C8C92 /* [CP] Check Pods Manifest.lock */,
 				65C4926C1CFB866400E47F83 /* Sources */,
 				65C4926D1CFB866400E47F83 /* Frameworks */,
 				65C4926E1CFB866400E47F83 /* Resources */,
-				0509D67A73C10C9E9EF1482F /* 📦 Embed Pods Frameworks */,
-				47E65D6ED572E5DAAAC8DFF1 /* 📦 Copy Pods Resources */,
+				0509D67A73C10C9E9EF1482F /* [CP] Embed Pods Frameworks */,
+				47E65D6ED572E5DAAAC8DFF1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -605,11 +605,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65C4928A1CFB866400E47F83 /* Build configuration list for PBXNativeTarget "ChurillaRecipesUITests" */;
 			buildPhases = (
-				BAC65D36A771F54874E253E3 /* 📦 Check Pods Manifest.lock */,
+				BAC65D36A771F54874E253E3 /* [CP] Check Pods Manifest.lock */,
 				65C492771CFB866400E47F83 /* Sources */,
 				65C492781CFB866400E47F83 /* Frameworks */,
 				65C492791CFB866400E47F83 /* Resources */,
-				DB4630B44AF087BDED667C7C /* 📦 Copy Pods Resources */,
+				DB4630B44AF087BDED667C7C /* [CP] Copy Pods Resources */,
+				4533B685D0F2097EF9DFB4F5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -634,13 +635,16 @@
 					65C492591CFB866400E47F83 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 4HWQ95CTCF;
+						LastSwiftMigration = 0800;
 					};
 					65C4926F1CFB866400E47F83 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 65C492591CFB866400E47F83;
 					};
 					65C4927A1CFB866400E47F83 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 65C492591CFB866400E47F83;
 					};
 				};
@@ -693,14 +697,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0509D67A73C10C9E9EF1482F /* 📦 Embed Pods Frameworks */ = {
+		0509D67A73C10C9E9EF1482F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,14 +712,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurillaRecipesTests/Pods-ChurillaRecipesTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		47E65D6ED572E5DAAAC8DFF1 /* 📦 Copy Pods Resources */ = {
+		4533B685D0F2097EF9DFB4F5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurillaRecipesUITests/Pods-ChurillaRecipesUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47E65D6ED572E5DAAAC8DFF1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -723,14 +742,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurillaRecipesTests/Pods-ChurillaRecipesTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9549EA8BDC7BCAE7C905F1C4 /* 📦 Embed Pods Frameworks */ = {
+		9549EA8BDC7BCAE7C905F1C4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,29 +757,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurillaRecipes/Pods-ChurillaRecipes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9F65D32C5E0A49E1A20C8C92 /* 📦 Check Pods Manifest.lock */ = {
+		9F65D32C5E0A49E1A20C8C92 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A57D4AC442457BDB024742DE /* 📦 Copy Pods Resources */ = {
+		A57D4AC442457BDB024742DE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -768,44 +787,44 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurillaRecipes/Pods-ChurillaRecipes-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BAC65D36A771F54874E253E3 /* 📦 Check Pods Manifest.lock */ = {
+		BAC65D36A771F54874E253E3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		BB8211B08F0A78DD66BA3E34 /* 📦 Check Pods Manifest.lock */ = {
+		BB8211B08F0A78DD66BA3E34 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		DB4630B44AF087BDED667C7C /* 📦 Copy Pods Resources */ = {
+		DB4630B44AF087BDED667C7C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1033,6 +1052,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipes;
 				PRODUCT_NAME = Churilla;
 				PROVISIONING_PROFILE = "1398f31f-401c-48a1-9bed-45e95f025da1";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1047,6 +1067,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipes;
 				PRODUCT_NAME = Churilla;
 				PROVISIONING_PROFILE = "1398f31f-401c-48a1-9bed-45e95f025da1";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1059,7 +1080,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChurillaRecipes.app/ChurillaRecipes";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Churilla.app/Churilla";
 			};
 			name = Debug;
 		};
@@ -1072,7 +1094,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChurillaRecipes.app/ChurillaRecipes";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Churilla.app/Churilla";
 			};
 			name = Release;
 		};
@@ -1084,6 +1107,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipesUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ChurillaRecipes;
 			};
 			name = Debug;
@@ -1096,6 +1120,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipesUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ChurillaRecipes;
 			};
 			name = Release;

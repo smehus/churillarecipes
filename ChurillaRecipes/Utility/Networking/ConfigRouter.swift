@@ -11,8 +11,8 @@ import Foundation
 
 internal struct ConfigRouter: Router {
     
-    var method: Alamofire.Method {
-        return .GET
+    var method: HTTPMethod {
+        return .get
     }
     
     var path: String {

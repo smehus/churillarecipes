@@ -12,10 +12,10 @@ import Alamofire
 internal final class AddRecipePicturesViewModel: ViewModel {
     typealias StoreType = RecipeStore
     
-    private let store: RecipeStore
-    private let uploader: ImageUploader?
-    private var recipeImages = [String]()
-    private var recipe: RecipeFlyweight?
+    fileprivate let store: RecipeStore
+    fileprivate let uploader: ImageUploader?
+    fileprivate var recipeImages = [String]()
+    fileprivate var recipe: RecipeFlyweight?
     
     init(store: StoreType, uploader: ImageUploader, recipe: RecipeFlyweight) {
         self.store = store
@@ -33,13 +33,13 @@ internal final class AddRecipePicturesViewModel: ViewModel {
         return AddFinishedPicturesViewModel(store: store, uploader: uploader)
     }
     
-    func uploadImage(image: UIImage, completed: (Result<(), ObjectError>) -> Void) {
-        guard let recipe = recipe, title = recipe.title else { return }
+    func uploadImage(_ image: UIImage, completed: @escaping (Result<()>) -> Void) {
+        guard let recipe = recipe, let title = recipe.title else { return }
         uploader?.uploadImage(image, title: title + "\(recipeImages.count)", completion: { [weak self] (url) in
             self?.recipeImages.append(url)
-            completed(Result.Success())
+            completed(Result.success())
             }, failure: { (reason) in
-                completed(Result.Failure(ObjectError.CustomError(error: reason)))
+                completed(Result.failure(ObjectError.customError(error: reason)))
         })
     }
 }
@@ -52,11 +52,11 @@ extension AddRecipePicturesViewModel: DataSourceBinding {
         return 1
     }
     
-    func numberOfRowsForSection(section: Int) -> Int {
+    func numberOfRowsForSection(_ section: Int) -> Int {
         return recipeImages.count
     }
     
-    func viewModelForIndexPath(indexPath: NSIndexPath) -> CellViewModel {
+    func viewModelForIndexPath(_ indexPath: IndexPath) -> CellViewModel {
         return ImageCellViewModel(object: Image(imageUrlString: recipeImages[indexPath.row]))
     }
 }

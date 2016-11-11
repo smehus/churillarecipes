@@ -12,5 +12,5 @@ import AlamofireSwiftyJSON
 import SwiftyJSON
 
 internal protocol APIProtocol {
-    func executeRequest(router: Router, closure: Result<JSON, ObjectError> -> Void) -> Request
+    func executeRequest(_ router: Router, closure: @escaping (Result<JSON>) -> Void) -> Request
 }

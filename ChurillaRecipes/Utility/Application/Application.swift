@@ -23,7 +23,7 @@ internal struct Application {
     
     func run() -> Bool {
         
-        guard let delegate = UIApplication.sharedApplication().delegate as? AppDelegate, appWindow = delegate.window else {
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate, let appWindow = delegate.window else {
             return false
         }
         
@@ -37,7 +37,7 @@ internal struct Application {
         
         // Detail Controller
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         let detail = navigationController.topViewController! as! RecipeDetailViewController
         detail.viewModel = injector.recipeDetailViewModel()
         

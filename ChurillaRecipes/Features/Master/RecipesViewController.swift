@@ -19,9 +19,9 @@ internal final class RecipesViewController: UITableViewController, ChurillaViewC
         getRecipes()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == RecipeDetailViewController.segueIdentifier {
-            guard let nav = segue.destinationViewController as? UINavigationController, controller = nav.topViewController as? RecipeDetailViewController else {
+            guard let nav = segue.destination as? UINavigationController, let controller = nav.topViewController as? RecipeDetailViewController else {
                 fatalError()
             }
             
@@ -42,19 +42,19 @@ internal final class RecipesViewController: UITableViewController, ChurillaViewC
         }
         
         let navigation = UINavigationController(rootViewController: controller)
-        presentViewController(navigation, animated: true, completion: nil)
+        present(navigation, animated: true, completion: nil)
     }
     
-    private func setupView() {
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addRecipe))
+    fileprivate func setupView() {
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRecipe))
         navigationItem.rightBarButtonItem = addButton
     }
 
-    private func getRecipes() {
+    fileprivate func getRecipes() {
         viewModel.retrieveAllRecipes(success: { [weak self] _ in
             self?.tableView.reloadData()
             }) { (error) in
-                self.showAlert("Oops", message: error.userFacingDescription)
+                self.showAlert("Oops", message: error.localizedDescription)
         }
     }
     
@@ -62,15 +62,15 @@ internal final class RecipesViewController: UITableViewController, ChurillaViewC
 
 extension RecipesViewController {
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowsForSection(section)
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RecipeCell = tableView.dequeueReusableCellForIndex(indexPath)
         let model = viewModel.viewModelForIndexPath(indexPath)
         cell.titleText = model.title

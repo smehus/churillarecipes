@@ -8,9 +8,6 @@
 
 import Foundation
 
-typealias URL = NSURL
-typealias Data = NSData
-
 internal protocol Archivable {
     static func path() -> URL
     func path() -> URL

@@ -11,9 +11,9 @@ import UIKit
 internal final class AddFinishedPicturesViewController: UIViewController, ChurillaViewController {
     var viewModel: AddFinishedPicturesViewModel!
     
-    @IBOutlet private weak var infoLabel: UILabel!
-    @IBOutlet private weak var collectionView: UICollectionView!
-    @IBAction private func addButtonPressed(sender: AnyObject) {
+    @IBOutlet fileprivate weak var infoLabel: UILabel!
+    @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBAction fileprivate func addButtonPressed(_ sender: AnyObject) {
         
     }
 }

@@ -8,12 +8,12 @@
 
 import Foundation
 import UIKit
-
+        
 internal protocol ImageUploader {
     
     var baseUrl: String { get }
     
-    func uploadImage(image: UIImage, title: String, completion: (url: String) -> Void, failure: (reason: String) -> Void)
+    func uploadImage(_ image: UIImage, title: String, completion: @escaping (_ url: String) -> Void, failure: @escaping (_ reason: String) -> Void)
     
-    func uploadImages(images: [UIImage], title: String, completion: (urls: [String]) -> Void, failure: (reason: String) -> Void)
+    func uploadImages(_ images: [UIImage], title: String, completion: @escaping (_ urls: [String]) -> Void, failure: @escaping (_ reason: String) -> Void)
 }

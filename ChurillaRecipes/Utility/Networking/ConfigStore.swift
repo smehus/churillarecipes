@@ -12,7 +12,7 @@ internal struct ConfigStore: Store {
     
     let configFileDownload = Observable<Bool>(false)
     
-    private let environment: APIProtocol
+    fileprivate let environment: APIProtocol
 
     init(environment: APIProtocol) {
         self.environment = environment
@@ -23,7 +23,7 @@ internal struct ConfigStore: Store {
         environment.executeRequest(router) { (result) in
             self.configFileDownload.value = true
             switch result {
-            case .Success(let json):
+            case .success(let json):
                 do {
                     let config = try Config(json: json)
                     FileManager().cacheFile(config)
@@ -31,7 +31,7 @@ internal struct ConfigStore: Store {
                     print("\(json)")
                 }
                 
-            case .Failure(let error):
+            case .failure(let error):
                 print("ERROR \(error)")
             }
         }

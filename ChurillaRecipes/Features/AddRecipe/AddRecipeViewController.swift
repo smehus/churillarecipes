@@ -17,43 +17,43 @@ internal final class AddRecipeViewController: UIViewController, ChurillaViewCont
     var viewModel: AddRecipeViewModel!
     var reloadTable: (() -> Void)?
     
-    @IBOutlet private weak var titleTextField: UITextField!
-    @IBOutlet private weak var descriptionTextField: UITextView!
-    @IBOutlet private weak var textViewPlaceholder: UILabel!
+    @IBOutlet fileprivate weak var titleTextField: UITextField!
+    @IBOutlet fileprivate weak var descriptionTextField: UITextView!
+    @IBOutlet fileprivate weak var textViewPlaceholder: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Identifiers.RecipePictures.rawValue {
             let model = viewModel.nextViewModel()
-            guard let controller = segue.destinationViewController as? AddRecipePicturesViewController else { return }
+            guard let controller = segue.destination as? AddRecipePicturesViewController else { return }
             controller.viewModel = model
         }
     }
     
-    private func setupView() {
-        let saveButton = UIBarButtonItem(title: "Next", style: .Plain, target: self, action: #selector(nextStep))
+    fileprivate func setupView() {
+        let saveButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextStep))
         navigationItem.rightBarButtonItem = saveButton
         
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancel))
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         navigationItem.leftBarButtonItem = cancelButton
         
-        titleTextField.addTarget(self, action: #selector(titleTextUpdate), forControlEvents: UIControlEvents.EditingChanged)
+        titleTextField.addTarget(self, action: #selector(titleTextUpdate), for: UIControlEvents.editingChanged)
     }
     
-    @objc private func titleTextUpdate(textField: UITextField) {
+    @objc fileprivate func titleTextUpdate(_ textField: UITextField) {
         viewModel.titleString = textField.text ?? ""
     }
     
-    @objc private func cancel() {
-        dismissViewControllerAnimated(true, completion: nil)
+    @objc fileprivate func cancel() {
+        dismiss(animated: true, completion: nil)
     }
     
-    @objc private func nextStep() {
-        performSegueWithIdentifier(Identifiers.RecipePictures.rawValue, sender: nil)
+    @objc fileprivate func nextStep() {
+        performSegue(withIdentifier: Identifiers.RecipePictures.rawValue, sender: nil)
     }
     
 //    @objc private func saveRecipe() {
@@ -71,7 +71,7 @@ internal final class AddRecipeViewController: UIViewController, ChurillaViewCont
 //        }
 //    }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
@@ -79,16 +79,16 @@ internal final class AddRecipeViewController: UIViewController, ChurillaViewCont
 
 extension AddRecipeViewController: UITextViewDelegate {
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         viewModel.descriptionString = textView.text
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
-        textViewPlaceholder.hidden = true
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textViewPlaceholder.isHidden = true
     }
     
-    func textViewDidEndEditing(textView: UITextView) {
-        textViewPlaceholder.hidden = textView.text.characters.count > 0
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textViewPlaceholder.isHidden = textView.text.characters.count > 0
     }
 }
 

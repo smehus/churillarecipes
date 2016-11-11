@@ -11,10 +11,10 @@ import SwiftyJSON
 
 internal struct Image: Object {
     
-    var imageURL: NSURL {
+    var imageURL: URL? {
         get {
-            guard let url = NSURL(string: imageString) else {
-                return NSURL()
+            guard let url = Foundation.URL(string: imageString) else {
+                return nil
             }
             
             return url
@@ -25,14 +25,14 @@ internal struct Image: Object {
         return imageString
     }
     
-    private let imageString: String
+    fileprivate let imageString: String
     
     init(imageUrlString: String) {
         self.imageString = imageUrlString
     }
     
     init(json: JSON) throws {
-        throw ObjectError.MappingError
+        throw ObjectError.mappingError
     }
     
     func toJSON() -> APIParams {

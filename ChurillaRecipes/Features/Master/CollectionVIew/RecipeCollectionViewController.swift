@@ -21,7 +21,7 @@ internal final class RecipeCollectionViewController: UICollectionViewController,
         
     }
     
-    private func setupBindings() {
+    fileprivate func setupBindings() {
         viewModel.configFinished?.startListening(self, event: { (finished) in
             self.getRecipes()
         })
@@ -35,8 +35,8 @@ internal final class RecipeCollectionViewController: UICollectionViewController,
         }
     }
     
-    private func setupView() {
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addRecipe))
+    fileprivate func setupView() {
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRecipe))
         navigationItem.rightBarButtonItem = addButton
     }
     
@@ -49,23 +49,23 @@ internal final class RecipeCollectionViewController: UICollectionViewController,
         }
         
         let navigation = UINavigationController(rootViewController: controller)
-        presentViewController(navigation, animated: true, completion: nil)
+        present(navigation, animated: true, completion: nil)
     }
     
-    private func getRecipes() {
+    fileprivate func getRecipes() {
         viewModel.retrieveAllRecipes(success: { [weak self] _ in
             self?.collectionView?.reloadData()
         }) { (error) in
-            self.showAlert("Oops", message: error.userFacingDescription)
+            self.showAlert("Oops", message: error.localizedDescription)
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == RecipeDetailViewController.segueIdentifier {
             guard let
-                nav = segue.destinationViewController as? UINavigationController,
-                controller = nav.topViewController as? RecipeDetailViewController,
-                idx = collectionView?.indexPathsForSelectedItems()?.first
+                nav = segue.destination as? UINavigationController,
+                let controller = nav.topViewController as? RecipeDetailViewController,
+                let idx = collectionView?.indexPathsForSelectedItems?.first
                 else {
                 fatalError()
             }
@@ -76,16 +76,16 @@ internal final class RecipeCollectionViewController: UICollectionViewController,
         }
     }
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.numberOfSections
     }
 
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfRowsForSection(section)
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: RecipeCollectionViewCell = collectionView.dequeueCollectionCellForIndex(indexPath)
         let model = viewModel.viewModelForIndexPath(indexPath)
         cell.recipeImageURL = model.imageURL
