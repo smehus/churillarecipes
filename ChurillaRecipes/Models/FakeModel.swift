@@ -20,7 +20,7 @@ internal struct FakeModel: Object {
         guard let first: String = json["model"].stringValue,
             let id: Int = json["_id"].intValue
         else {
-            throw ObjectError.MappingError
+            throw ObjectError.mappingError
         }
         
         objectId = id

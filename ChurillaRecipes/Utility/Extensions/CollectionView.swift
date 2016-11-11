@@ -11,8 +11,8 @@ import UIKit
 
 extension UICollectionView {
     
-    func dequeueCollectionCellForIndex<T where T: ReusableCell>(indexPath: NSIndexPath) -> T {
-        guard let cell = self.dequeueReusableCellWithReuseIdentifier(T.reuseIdentifier, forIndexPath: indexPath) as? T else {
+    func dequeueCollectionCellForIndex<T>(_ indexPath: IndexPath) -> T where T: ReusableCell {
+        guard let cell = self.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Cell could not be deq")
         }
         

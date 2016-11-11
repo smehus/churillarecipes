@@ -15,12 +15,12 @@ protocol ChurillaViewController: StoryboardIdentifiable, ViewModelBindable, Aler
 
 extension ChurillaViewController where Self: UIViewController {
     
-    func presentView<T: UIViewController where T: ChurillaViewController>(presentee: T.Type, viewModel: ViewModelType) {
+    func presentView<T: UIViewController>(_ presentee: T.Type, viewModel: ViewModelType) where T: ChurillaViewController {
         let addController: T = T.parentStoryboard.instantiateViewController()
-        self.presentViewController(addController, animated: true, completion: nil)
+        self.present(addController, animated: true, completion: nil)
     }
     
-    func pushView<T: UIViewController where T: ChurillaViewController>(presentee: T.Type, viewModel: ViewModelType) {
+    func pushView<T: UIViewController>(_ presentee: T.Type, viewModel: ViewModelType) where T: ChurillaViewController {
         let addController: T = T.parentStoryboard.instantiateViewController()
         self.navigationController?.pushViewController(addController, animated: true)
     }

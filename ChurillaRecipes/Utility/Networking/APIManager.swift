@@ -19,36 +19,37 @@ let ErrorMessage = "errorMessage"
 
 internal struct APIManager: APIProtocol {
     
-    let manager = Manager()
+    let manager = SessionManager()
     
     var managerHeaders: Header {
         return [:]
     }
     
     init() {
-        manager.session.configuration.HTTPAdditionalHeaders = managerHeaders
+        manager.session.configuration.httpAdditionalHeaders = managerHeaders
     }
     
-    func executeRequest(router: Router, closure: Result<JSON, ObjectError> -> Void) -> Request {
+    func executeRequest(_ router: Router, closure: @escaping (Result<JSON>) -> Void) -> Request {
+
         return manager.request(router).responseSwiftyJSON { response in
             print("\(response)")
             
             switch response.result {
-            case .Success(let res):
-                guard let success = res[Success].bool where success == true else {
+            case .success(let res):
+                guard let success = res[Success].bool , success == true else {
                     switch res[ErrorMessage].string {
-                    case .Some(let message):
-                        closure(Result.Failure(ObjectError.ResponseError(error: message)))
-                    case .None:
-                        closure(Result.Failure(ObjectError.NetworkError))
+                    case .some(let message):
+                        closure(Result.failure(ObjectError.responseError(error: message)))
+                    case .none:
+                        closure(Result.failure(ObjectError.networkError))
                     }
                     return
                 }
             
-                closure(Result.Success(res))
+                closure(Result.success(res))
                 
-            case .Failure(let error):
-                closure(Result.Failure(ObjectError.ResponseError(error: error.localizedDescription)))
+            case .failure(let error):
+                closure(Result.failure(ObjectError.responseError(error: error.localizedDescription)))
             }
             
         }

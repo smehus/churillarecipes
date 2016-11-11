@@ -11,9 +11,10 @@ import AFNetworking
 
 internal final class RecipeCell: UITableViewCell, ReusableCell {
 
-    var recipeImageURL: NSURL = NSURL() {
+    var recipeImageURL: URL? {
         didSet {
-            recipeImageView.setImageWithURL(recipeImageURL)
+            guard let url = recipeImageURL else { return }
+            recipeImageView.setImageWith(url)
         }
     }
     
@@ -30,8 +31,8 @@ internal final class RecipeCell: UITableViewCell, ReusableCell {
         }
     }
 
-    @IBOutlet private weak var recipeImageView: UIImageView!
-    @IBOutlet private weak var recipeTitle: UILabel!
-    @IBOutlet private weak var recipeDescription: UILabel!
+    @IBOutlet fileprivate weak var recipeImageView: UIImageView!
+    @IBOutlet fileprivate weak var recipeTitle: UILabel!
+    @IBOutlet fileprivate weak var recipeDescription: UILabel!
 
 }

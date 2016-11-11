@@ -12,6 +12,6 @@ import Foundation
 extension String {
     
     func removeSpaces() -> String {
-        return self.stringByReplacingOccurrencesOfString(" ", withString: "_")
+        return self.replacingOccurrences(of: " ", with: "_")
     }
 }

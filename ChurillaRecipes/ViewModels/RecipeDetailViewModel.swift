@@ -32,7 +32,7 @@ internal class RecipeDetailViewModel: ViewModel {
     }
     
     var recipeImages: [Image] {
-        guard let openedReciepe = recipe where openedReciepe.recipeImages.count > 0 else {
+        guard let openedReciepe = recipe , openedReciepe.recipeImages.count > 0 else {
             return [Image]()
         }
         
@@ -40,14 +40,14 @@ internal class RecipeDetailViewModel: ViewModel {
     }
     
     var finishedImages: [Image] {
-        guard let openedReciepe = recipe where openedReciepe.finishedImages.count > 0 else {
+        guard let openedReciepe = recipe , openedReciepe.finishedImages.count > 0 else {
             return [Image]()
         }
         
         return openedReciepe.finishedImages
     }
     
-    private var recipe: Recipe?
+    fileprivate var recipe: Recipe?
     init(store: StoreType, recipe: Recipe) {
         self.store = store
         self.recipe = recipe
@@ -66,32 +66,32 @@ internal class RecipeDetailViewModel: ViewModel {
         self.uploader = nil
     }
     
-    func uploadImageAndUpdateRecipe(image: UIImage, completed: () -> Void, failed: (message: String) -> Void) {
+    func uploadImageAndUpdateRecipe(_ image: UIImage, completed: @escaping () -> Void, failed: @escaping (_ message: String) -> Void) {
         guard let imageUploader = uploader else {
-            failed(message: "Image Uploader Not Present")
+            failed("Image Uploader Not Present")
             return
         }
         
         imageUploader.uploadImage(image, title: recipeTitle + "_finished_\(finishedImages.count)", completion: { (url) in
                 self.addImageToRecipe(url, completed: completed, failed: failed)
             }) { (reason) in
-                failed(message: reason)
+                failed(reason)
         }
     }
     
-    private func addImageToRecipe(url: String, completed: () -> Void, failed: (message: String) -> Void) {
+    fileprivate func addImageToRecipe(_ url: String, completed: @escaping () -> Void, failed: @escaping (_ message: String) -> Void) {
         guard let strongRecipe = recipe else {
-            failed(message: "No Recipe Present")
+            failed("No Recipe Present")
             return
         }
         
         store.addFinishedImageToRecipe(strongRecipe, imageURL: url) { (result) in
             switch result {
-            case .Success(let recipe):
+            case .success(let recipe):
 //                self.recipe = recipe
                 completed()
-            case .Failure(let error):
-                failed(message: error.userFacingDescription)
+            case .failure(let error):
+                failed(error.localizedDescription)
             }
         }
     }

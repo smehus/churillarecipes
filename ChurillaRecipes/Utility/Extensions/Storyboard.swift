@@ -16,12 +16,12 @@ extension UIStoryboard {
         case Detail
     }
     
-    convenience init(storyboard: Storyboard, bundle: NSBundle? = nil) {
+    convenience init(storyboard: Storyboard, bundle: Bundle? = nil) {
         self.init(name: storyboard.rawValue, bundle: bundle)
     }
     
-    func instantiateViewController<T: UIViewController, D: ViewModel where T: ChurillaViewController>(viewModel: D) -> T {
-        guard var controller = self.instantiateViewControllerWithIdentifier(T.storyboardIdentifier) as? T else {
+    func instantiateViewController<T: UIViewController, D: ViewModel>(_ viewModel: D) -> T where T: ChurillaViewController {
+        guard var controller = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
             fatalError("Failed to find storyboard file")
         }
 
@@ -29,8 +29,8 @@ extension UIStoryboard {
         return controller
     }
     
-    func instantiateViewController<T: UIViewController where T: StoryboardIdentifiable>() -> T {
-        let optionalViewController = self.instantiateViewControllerWithIdentifier(T.storyboardIdentifier)
+    func instantiateViewController<T: UIViewController>() -> T where T: StoryboardIdentifiable {
+        let optionalViewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier)
         guard let viewController = optionalViewController as? T else {
             fatalError("Failed to find storyboard file")
         }

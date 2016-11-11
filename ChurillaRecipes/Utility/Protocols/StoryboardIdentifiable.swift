@@ -16,7 +16,7 @@ internal protocol StoryboardIdentifiable {
 
 extension StoryboardIdentifiable where Self: UIViewController {
     static var storyboardIdentifier: String {
-        return String(self)
+        return String(describing: self)
     }
     
     // Default storyboard - need to override in each class if different storyboard

@@ -14,8 +14,8 @@ internal protocol DataSourceBinding {
     
     var numberOfSections: Int { get }
     
-    func numberOfRowsForSection(section: Int) -> Int
+    func numberOfRowsForSection(_ section: Int) -> Int
     
-    func viewModelForIndexPath(indexPath: NSIndexPath) -> CellViewModel
+    func viewModelForIndexPath(_ indexPath: IndexPath) -> CellViewModel
     
 }

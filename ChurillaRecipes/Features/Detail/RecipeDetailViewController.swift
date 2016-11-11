@@ -12,28 +12,28 @@ internal final class RecipeDetailViewController: UIViewController, ChurillaViewC
     
     var viewModel: RecipeDetailViewModel!
 
-    @IBOutlet private weak var recipeTitleLabel: UILabel!
-    @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var recipeDescriptionLabel: UILabel!
+    @IBOutlet fileprivate weak var recipeTitleLabel: UILabel!
+    @IBOutlet fileprivate weak var scrollView: UIScrollView!
+    @IBOutlet fileprivate weak var recipeDescriptionLabel: UILabel!
     
-    private var camera: Camera?
-    private var finishedPicturesController: FinishedPicturesViewController?
+    fileprivate var camera: Camera?
+    fileprivate var finishedPicturesController: FinishedPicturesViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == FinishedPicturesViewController.segueIdentifier {
-            guard let controller = segue.destinationViewController as? FinishedPicturesViewController else {
+            guard let controller = segue.destination as? FinishedPicturesViewController else {
                 fatalError()
             }
             finishedPicturesController = controller
             controller.images = viewModel.finishedImages
             
         } else if segue.identifier == InstructionsViewController.segueIdentifier {
-            guard let controller = segue.destinationViewController as? InstructionsViewController else {
+            guard let controller = segue.destination as? InstructionsViewController else {
                 fatalError()
             }
             
@@ -41,22 +41,22 @@ internal final class RecipeDetailViewController: UIViewController, ChurillaViewC
         }
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         camera = Camera(delegate: self)
         recipeTitleLabel.text = viewModel.recipeTitle
     }
 
-    @IBAction private func addFinishedImage(sender: AnyObject) {
+    @IBAction fileprivate func addFinishedImage(_ sender: AnyObject) {
         camera?.attemptCameraAccessAndOpen { [weak self] (pickedPhoto) in
             self?.uploadAndUpdate(pickedPhoto)
         }
     }
     
-    private func uploadAndUpdate(photo: UIImage) {
+    fileprivate func uploadAndUpdate(_ photo: UIImage) {
         viewModel.uploadImageAndUpdateRecipe(photo, completed: { [weak self] _ in
             
-            }) { (message) in
-                self.showAlert("Oops", message: message)
+            }) { [weak self] (message) in
+                self?.showAlert("Oops", message: message)
         }
     }
 }

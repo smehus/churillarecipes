@@ -15,7 +15,7 @@ internal protocol ReusableCell {
 internal extension ReusableCell {
     
     static var reuseIdentifier: String {
-        return String(self)
+        return String(describing: self)
     }
     
 }

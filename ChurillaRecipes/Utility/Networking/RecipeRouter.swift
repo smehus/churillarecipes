@@ -10,21 +10,21 @@ import Foundation
 import Alamofire
 
 internal enum RecipeEndPoint {
-    case DebugAll
-    case AllRecipes
-    case AddRecipe(recipe: Recipe)
-    case GetRecipe(name: String)
-    case AddFinishedImage(recipe: Recipe, url: NSString)
+    case debugAll
+    case allRecipes
+    case addRecipe(recipe: Recipe)
+    case getRecipe(name: String)
+    case addFinishedImage(recipe: Recipe, url: String)
     
     
     var endPointPath: String {
         switch self {
-            case .AllRecipes: return "all"
-            case .AddRecipe: return "add"
-            case .GetRecipe: return "search"
-            case .AddFinishedImage: return "addFinishedImage"
+            case .allRecipes: return "all"
+            case .addRecipe: return "add"
+            case .getRecipe: return "search"
+            case .addFinishedImage: return "addFinishedImage"
             
-            case .DebugAll: return "debugall"
+            case .debugAll: return "debugall"
         }
     }
 }
@@ -39,14 +39,14 @@ internal struct RecipeRouter {
 
 extension RecipeRouter: Router {
     
-    var method: Alamofire.Method {
+    var method: HTTPMethod {
         switch endPoint {
-            case .AllRecipes: return .GET
-            case .AddRecipe: return .POST
-            case .GetRecipe: return .GET
-            case .AddFinishedImage: return .PUT
+            case .allRecipes: return .get
+            case .addRecipe: return .post
+            case .getRecipe: return .get
+            case .addFinishedImage: return .put
             
-            case .DebugAll: return .GET
+            case .debugAll: return .get
         }
     }
     
@@ -56,23 +56,23 @@ extension RecipeRouter: Router {
     
     var parameters: APIParams {
         switch endPoint {
-            case .AllRecipes: return nil
-            case .AddRecipe(let recipe): return recipe.toJSON()
-            case .GetRecipe: return nil
-            case .AddFinishedImage(let recipe, let url): return ["_id": recipe.objectId, "url": url]
+            case .allRecipes: return nil
+            case .addRecipe(let recipe): return recipe.toJSON()
+            case .getRecipe: return nil
+            case .addFinishedImage(let recipe, let url): return ["_id": recipe.objectId, "url": url]
             
-            case .DebugAll: return nil
+            case .debugAll: return nil
         }
     }
     
     var encoding: ParameterEncoding? {
             switch endPoint {
-                case .AllRecipes: return .JSON
-                case .AddRecipe: return .JSON
-                case .GetRecipe: return .JSON
-                case .AddFinishedImage: return .JSON
+                case .allRecipes: return JSONEncoding.default
+                case .addRecipe: return JSONEncoding.default
+                case .getRecipe: return JSONEncoding.default
+                case .addFinishedImage: return JSONEncoding.default
                 
-                case .DebugAll: return .JSON
+                case .debugAll: return JSONEncoding.default
         }
     }
  

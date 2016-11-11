@@ -10,24 +10,24 @@ import Foundation
 import UIKit
 
 internal protocol Alertable {
-    func showAlert(title: String, message: String?)
+    func showAlert(_ title: String, message: String?)
 }
 
 extension Alertable where Self: UIViewController {
     
-    func showAlert(title: String, message: String?) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: "Okay", style: .Cancel, handler: nil)
+    func showAlert(_ title: String, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
         alert.addAction(action)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func showAlertWithDismiss(title: String, message: String?) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: "Okay", style: .Cancel) { (action) in
-            self.dismissViewControllerAnimated(true, completion: nil)
+    func showAlertWithDismiss(_ title: String, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .cancel) { (action) in
+            self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(action)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 }

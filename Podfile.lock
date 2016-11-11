@@ -14,15 +14,15 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - Alamofire (3.4.0)
-  - AlamofireSwiftyJSON (0.1.1):
-    - Alamofire (~> 3.4)
-    - SwiftyJSON (~> 2.3)
-  - AmazonS3RequestManager (0.12.0):
-    - Alamofire (~> 3.0)
-    - SWXMLHash (~> 2.0)
-  - SwiftyJSON (2.3.2)
-  - SWXMLHash (2.3.1)
+  - Alamofire (4.0.1)
+  - AlamofireSwiftyJSON (0.2.0):
+    - Alamofire (~> 4.0)
+    - SwiftyJSON (~> 3.1)
+  - AmazonS3RequestManager (1.0.4):
+    - Alamofire (~> 4.0)
+    - SWXMLHash (~> 3.0)
+  - SwiftyJSON (3.1.1)
+  - SWXMLHash (3.0.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -31,12 +31,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  AlamofireSwiftyJSON: 4787ff07c7e6687b787f1723229e729653e3359f
-  AmazonS3RequestManager: a88f4596165b46961a6bf904f357ba2aab4931b6
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  SWXMLHash: 795c66e74f4cc9473ad6465c6653c5a6f59f417e
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireSwiftyJSON: 5a49196b8b061e32f5ebc84fa0815300bd8a974e
+  AmazonS3RequestManager: d7c3f50de30d7484d337c23a8f767d4959dae2a8
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  SWXMLHash: e0f6935971f01b06fb228cf435510d998ecde647
 
 PODFILE CHECKSUM: 1cd5db6b668fd71713ec242dd5054a62e9e30ce5
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.1.1

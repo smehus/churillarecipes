@@ -14,10 +14,10 @@ internal final class HorizontalLayout: UICollectionViewLayout {
     var layoutAttributes =  [UICollectionViewLayoutAttributes]()
     var itemSize: CGSize!
     
-    override func prepareLayout() {
+    override func prepare() {
         itemSize = CGSize(width: collectionView!.frame.size.width / 2, height: collectionView!.frame.size.height)
-        layoutAttributes = (0..<collectionView!.numberOfItemsInSection(0)).map { i in
-            let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: NSIndexPath(forItem: i, inSection: 0))
+        layoutAttributes = (0..<collectionView!.numberOfItems(inSection: 0)).map { i in
+            let attributes = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: i, section: 0))
             attributes.size = itemSize
             attributes.frame = CGRect(origin: CGPoint(x: (itemSize.width + 10) * CGFloat(i), y: 0) , size: itemSize)
             return attributes
@@ -25,16 +25,16 @@ internal final class HorizontalLayout: UICollectionViewLayout {
     }
 
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return layoutAttributes
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return layoutAttributes[indexPath.row]
     }
     
-    override func collectionViewContentSize() -> CGSize {
-        let number = collectionView!.numberOfItemsInSection(0)
+    override var collectionViewContentSize : CGSize {
+        let number = collectionView!.numberOfItems(inSection: 0)
         return CGSize(width: (collectionView!.frame.size.width / 2) * CGFloat(number), height: collectionView!.frame.size.height)
     }
     

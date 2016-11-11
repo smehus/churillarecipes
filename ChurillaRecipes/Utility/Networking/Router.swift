@@ -11,10 +11,10 @@ import Foundation
 import Alamofire
 
 
-typealias APIParams = [String: AnyObject]?
+typealias APIParams = Parameters?
 
 internal protocol Router: URLRequestConvertible {
-    var method: Alamofire.Method { get }
+    var method: HTTPMethod { get }
     var encoding: Alamofire.ParameterEncoding? { get }
     var path: String { get }
     var parameters: APIParams { get }
@@ -27,17 +27,19 @@ extension Router {
         return "https://whispering-crag-40905.herokuapp.com/"
     }
     
-    var URLRequest: NSMutableURLRequest {
-        guard let baseURL = NSURL(string: baseUrl) else {
+    func asURLRequest() throws -> URLRequest {
+        guard let baseURL = Foundation.URL(string: baseUrl) else {
             fatalError("bad url")
         }
         
-        let mutableURLRequest = NSMutableURLRequest(URL: baseURL.URLByAppendingPathComponent(path))
-        mutableURLRequest.HTTPMethod = method.rawValue
+        var request = URLRequest(url: baseURL.appendingPathComponent(path))
+        request.httpMethod = method.rawValue
         if let encoding = encoding {
-            return encoding.encode(mutableURLRequest, parameters: parameters).0
+            return try encoding.encode(request, with: parameters)
         }
-        return mutableURLRequest
+        
+        return request
     }
+    
 }
 

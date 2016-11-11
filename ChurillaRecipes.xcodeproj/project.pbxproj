@@ -14,6 +14,11 @@
 		6519978A1D1C341B004C2B31 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651997891D1C341B004C2B31 /* Router.swift */; };
 		6519978E1D1C34E9004C2B31 /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6519978D1D1C34E9004C2B31 /* RecipesViewController.swift */; };
 		651997901D1C3501004C2B31 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6519978F1D1C3501004C2B31 /* RecipeDetailViewController.swift */; };
+		653B72071DA0637E001021BF /* AddRecipePicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653B72061DA0637E001021BF /* AddRecipePicturesViewController.swift */; };
+		653B72091DA063DC001021BF /* AddRecipePicturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653B72081DA063DC001021BF /* AddRecipePicturesViewModel.swift */; };
+		653B720C1DA15E00001021BF /* AddFinishedPicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653B720B1DA15E00001021BF /* AddFinishedPicturesViewController.swift */; };
+		653B720E1DA15E55001021BF /* AddFinishedPicturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653B720D1DA15E55001021BF /* AddFinishedPicturesViewModel.swift */; };
+		653B72101DA1619D001021BF /* RecipeFlyweight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653B720F1DA1619D001021BF /* RecipeFlyweight.swift */; };
 		653BF4B11D1EAAED000EF13D /* FinishedPicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BF4B01D1EAAED000EF13D /* FinishedPicturesViewController.swift */; };
 		653BF4B31D1EAB09000EF13D /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BF4B21D1EAB08000EF13D /* InstructionsViewController.swift */; };
 		653BF4B51D1EAC8C000EF13D /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BF4B41D1EAC8C000EF13D /* ImageCell.swift */; };
@@ -21,6 +26,9 @@
 		653BF4BA1D1EAF9C000EF13D /* HorizontalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BF4B91D1EAF9C000EF13D /* HorizontalLayout.swift */; };
 		654C1CD91D3FBBBE00E6DEDA /* RecipeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C1CD81D3FBBBE00E6DEDA /* RecipeCollectionViewController.swift */; };
 		654C1CDB1D3FBFF100E6DEDA /* StackedParallaxLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C1CDA1D3FBFF100E6DEDA /* StackedParallaxLayout.swift */; };
+		656572111D7300BE00B69FA7 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656572101D7300BE00B69FA7 /* UIViewExtensions.swift */; };
+		656572141D73021800B69FA7 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656572131D73021800B69FA7 /* Observable.swift */; };
+		656572171D731B7900B69FA7 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656572161D731B7900B69FA7 /* FileManager.swift */; };
 		657834921D1C35DD00C0E912 /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657834911D1C35DD00C0E912 /* RecipesViewModel.swift */; };
 		657834941D1C35EA00C0E912 /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657834931D1C35EA00C0E912 /* RecipeDetailViewModel.swift */; };
 		657834961D1C3F6600C0E912 /* Array+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657834951D1C3F6600C0E912 /* Array+JSON.swift */; };
@@ -33,6 +41,7 @@
 		657834A51D1C6F7700C0E912 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657834A41D1C6F7700C0E912 /* RecipeCell.swift */; };
 		657834A81D1C7C4C00C0E912 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657834A71D1C7C4B00C0E912 /* Alertable.swift */; };
 		659CF0401CFD1D56007DAA3F /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659CF03F1CFD1D56007DAA3F /* RecipeStore.swift */; };
+		65A46C181D69D7D5005A0A53 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A46C171D69D7D5005A0A53 /* RecipeCollectionViewCell.swift */; };
 		65AB3B521D2151EA004FB9A8 /* SegueIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AB3B511D2151EA004FB9A8 /* SegueIdentifiable.swift */; };
 		65AB3B541D2153D0004FB9A8 /* ImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AB3B531D2153D0004FB9A8 /* ImageCellViewModel.swift */; };
 		65AB3B561D215505004FB9A8 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AB3B551D215505004FB9A8 /* Image.swift */; };
@@ -48,6 +57,10 @@
 		65D4166E1D1DA97500FA4F1D /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D4166D1D1DA97500FA4F1D /* ImageUploader.swift */; };
 		65D416701D1DAA7F00FA4F1D /* Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D4166F1D1DAA7F00FA4F1D /* Amazon.swift */; };
 		65D416721D1DABAD00FA4F1D /* String+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D416711D1DABAD00FA4F1D /* String+Format.swift */; };
+		65F4890F1D7325970038A180 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4890E1D7325970038A180 /* Config.swift */; };
+		65F489111D732FA10038A180 /* Archivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F489101D732FA10038A180 /* Archivable.swift */; };
+		65F489131D7332A00038A180 /* ConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F489121D7332A00038A180 /* ConfigStore.swift */; };
+		65F489151D7332F50038A180 /* ConfigRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F489141D7332F50038A180 /* ConfigRouter.swift */; };
 		A521C3C51D0B2FDF00A99623 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521C3C41D0B2FDF00A99623 /* Application.swift */; };
 		A521C3C81D0B301900A99623 /* AppInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521C3C71D0B301900A99623 /* AppInjector.swift */; };
 		A521C3CA1D0B32D500A99623 /* SplitControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521C3C91D0B32D500A99623 /* SplitControllerManager.swift */; };
@@ -97,6 +110,11 @@
 		651997891D1C341B004C2B31 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		6519978D1D1C34E9004C2B31 /* RecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
 		6519978F1D1C3501004C2B31 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
+		653B72061DA0637E001021BF /* AddRecipePicturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecipePicturesViewController.swift; sourceTree = "<group>"; };
+		653B72081DA063DC001021BF /* AddRecipePicturesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecipePicturesViewModel.swift; sourceTree = "<group>"; };
+		653B720B1DA15E00001021BF /* AddFinishedPicturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFinishedPicturesViewController.swift; sourceTree = "<group>"; };
+		653B720D1DA15E55001021BF /* AddFinishedPicturesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFinishedPicturesViewModel.swift; sourceTree = "<group>"; };
+		653B720F1DA1619D001021BF /* RecipeFlyweight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeFlyweight.swift; sourceTree = "<group>"; };
 		653BF4B01D1EAAED000EF13D /* FinishedPicturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedPicturesViewController.swift; sourceTree = "<group>"; };
 		653BF4B21D1EAB08000EF13D /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		653BF4B41D1EAC8C000EF13D /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
@@ -104,6 +122,9 @@
 		653BF4B91D1EAF9C000EF13D /* HorizontalLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalLayout.swift; sourceTree = "<group>"; };
 		654C1CD81D3FBBBE00E6DEDA /* RecipeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewController.swift; sourceTree = "<group>"; };
 		654C1CDA1D3FBFF100E6DEDA /* StackedParallaxLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackedParallaxLayout.swift; sourceTree = "<group>"; };
+		656572101D7300BE00B69FA7 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		656572131D73021800B69FA7 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		656572161D731B7900B69FA7 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		657834911D1C35DD00C0E912 /* RecipesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
 		657834931D1C35EA00C0E912 /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
 		657834951D1C3F6600C0E912 /* Array+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+JSON.swift"; sourceTree = "<group>"; };
@@ -116,6 +137,7 @@
 		657834A41D1C6F7700C0E912 /* RecipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		657834A71D1C7C4B00C0E912 /* Alertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		659CF03F1CFD1D56007DAA3F /* RecipeStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
+		65A46C171D69D7D5005A0A53 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		65AB3B511D2151EA004FB9A8 /* SegueIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueIdentifiable.swift; sourceTree = "<group>"; };
 		65AB3B531D2153D0004FB9A8 /* ImageCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCellViewModel.swift; sourceTree = "<group>"; };
 		65AB3B551D215505004FB9A8 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -137,6 +159,10 @@
 		65D4166D1D1DA97500FA4F1D /* ImageUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		65D4166F1D1DAA7F00FA4F1D /* Amazon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Amazon.swift; sourceTree = "<group>"; };
 		65D416711D1DABAD00FA4F1D /* String+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Format.swift"; sourceTree = "<group>"; };
+		65F4890E1D7325970038A180 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = ../Utility/Config.swift; sourceTree = "<group>"; };
+		65F489101D732FA10038A180 /* Archivable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archivable.swift; sourceTree = "<group>"; };
+		65F489121D7332A00038A180 /* ConfigStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigStore.swift; sourceTree = "<group>"; };
+		65F489141D7332F50038A180 /* ConfigRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigRouter.swift; sourceTree = "<group>"; };
 		8628E74A1894B9C5DD52F543 /* Pods_ChurillaRecipesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChurillaRecipesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9727C554EA481B3F9FC0A24D /* Pods_ChurillaRecipesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChurillaRecipesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A521C3C41D0B2FDF00A99623 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
@@ -233,6 +259,16 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		653B720A1DA063E3001021BF /* AddRecipe */ = {
+			isa = PBXGroup;
+			children = (
+				A5EF72D01D12F419008FE0E4 /* AddRecipeViewModel.swift */,
+				653B72081DA063DC001021BF /* AddRecipePicturesViewModel.swift */,
+				653B720D1DA15E55001021BF /* AddFinishedPicturesViewModel.swift */,
+			);
+			name = AddRecipe;
+			sourceTree = "<group>";
+		};
 		653BF4B81D1EAF7B000EF13D /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,8 +282,25 @@
 			isa = PBXGroup;
 			children = (
 				654C1CD81D3FBBBE00E6DEDA /* RecipeCollectionViewController.swift */,
+				65A46C171D69D7D5005A0A53 /* RecipeCollectionViewCell.swift */,
 			);
 			path = CollectionVIew;
+			sourceTree = "<group>";
+		};
+		656572121D73020B00B69FA7 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				656572131D73021800B69FA7 /* Observable.swift */,
+			);
+			name = Observable;
+			sourceTree = "<group>";
+		};
+		656572151D731B6C00B69FA7 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				656572161D731B7900B69FA7 /* FileManager.swift */,
+			);
+			name = FileManager;
 			sourceTree = "<group>";
 		};
 		657834991D1C416000C0E912 /* CellViewModels */ = {
@@ -264,6 +317,8 @@
 			isa = PBXGroup;
 			children = (
 				A55868451D09C3D700838E5E /* AddRecipeViewController.swift */,
+				653B72061DA0637E001021BF /* AddRecipePicturesViewController.swift */,
+				653B720B1DA15E00001021BF /* AddFinishedPicturesViewController.swift */,
 			);
 			path = AddRecipe;
 			sourceTree = "<group>";
@@ -384,6 +439,9 @@
 				A55868431D0743CB00838E5E /* FakeModel.swift */,
 				6578349E1D1C4CC200C0E912 /* Recipe.swift */,
 				65AB3B551D215505004FB9A8 /* Image.swift */,
+				65F489101D732FA10038A180 /* Archivable.swift */,
+				65F4890E1D7325970038A180 /* Config.swift */,
+				653B720F1DA1619D001021BF /* RecipeFlyweight.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -401,6 +459,8 @@
 		A55868481D09C70E00838E5E /* Uitility */ = {
 			isa = PBXGroup;
 			children = (
+				656572151D731B6C00B69FA7 /* FileManager */,
+				656572121D73020B00B69FA7 /* Observable */,
 				653BF4B81D1EAF7B000EF13D /* Layouts */,
 				65D4166C1D1DA96400FA4F1D /* ImageUploader */,
 				651997881D1C33C7004C2B31 /* Protocols */,
@@ -432,6 +492,7 @@
 				65D4166A1D1D772700FA4F1D /* Result+JSON.swift */,
 				65D416711D1DABAD00FA4F1D /* String+Format.swift */,
 				653BF4B61D1EACE2000EF13D /* CollectionView.swift */,
+				656572101D7300BE00B69FA7 /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -441,6 +502,7 @@
 			children = (
 				A5CE72A81CFF67B50059F010 /* RecipeRouter.swift */,
 				651997891D1C341B004C2B31 /* Router.swift */,
+				65F489141D7332F50038A180 /* ConfigRouter.swift */,
 			);
 			name = Routers;
 			sourceTree = "<group>";
@@ -450,6 +512,7 @@
 			children = (
 				659CF03F1CFD1D56007DAA3F /* RecipeStore.swift */,
 				A521C3F31D0B421300A99623 /* Store.swift */,
+				65F489121D7332A00038A180 /* ConfigStore.swift */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -466,9 +529,9 @@
 		A5EF72CD1D12F28F008FE0E4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				653B720A1DA063E3001021BF /* AddRecipe */,
 				657834991D1C416000C0E912 /* CellViewModels */,
 				A5EF72CE1D12F29D008FE0E4 /* ViewModel.swift */,
-				A5EF72D01D12F419008FE0E4 /* AddRecipeViewModel.swift */,
 				657834911D1C35DD00C0E912 /* RecipesViewModel.swift */,
 				657834931D1C35EA00C0E912 /* RecipeDetailViewModel.swift */,
 			);
@@ -501,12 +564,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65C492841CFB866400E47F83 /* Build configuration list for PBXNativeTarget "ChurillaRecipes" */;
 			buildPhases = (
-				BB8211B08F0A78DD66BA3E34 /* 📦 Check Pods Manifest.lock */,
+				BB8211B08F0A78DD66BA3E34 /* [CP] Check Pods Manifest.lock */,
 				65C492561CFB866400E47F83 /* Sources */,
 				65C492571CFB866400E47F83 /* Frameworks */,
 				65C492581CFB866400E47F83 /* Resources */,
-				9549EA8BDC7BCAE7C905F1C4 /* 📦 Embed Pods Frameworks */,
-				A57D4AC442457BDB024742DE /* 📦 Copy Pods Resources */,
+				9549EA8BDC7BCAE7C905F1C4 /* [CP] Embed Pods Frameworks */,
+				A57D4AC442457BDB024742DE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -521,12 +584,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65C492871CFB866400E47F83 /* Build configuration list for PBXNativeTarget "ChurillaRecipesTests" */;
 			buildPhases = (
-				9F65D32C5E0A49E1A20C8C92 /* 📦 Check Pods Manifest.lock */,
+				9F65D32C5E0A49E1A20C8C92 /* [CP] Check Pods Manifest.lock */,
 				65C4926C1CFB866400E47F83 /* Sources */,
 				65C4926D1CFB866400E47F83 /* Frameworks */,
 				65C4926E1CFB866400E47F83 /* Resources */,
-				0509D67A73C10C9E9EF1482F /* 📦 Embed Pods Frameworks */,
-				47E65D6ED572E5DAAAC8DFF1 /* 📦 Copy Pods Resources */,
+				0509D67A73C10C9E9EF1482F /* [CP] Embed Pods Frameworks */,
+				47E65D6ED572E5DAAAC8DFF1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -542,11 +605,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65C4928A1CFB866400E47F83 /* Build configuration list for PBXNativeTarget "ChurillaRecipesUITests" */;
 			buildPhases = (
-				BAC65D36A771F54874E253E3 /* 📦 Check Pods Manifest.lock */,
+				BAC65D36A771F54874E253E3 /* [CP] Check Pods Manifest.lock */,
 				65C492771CFB866400E47F83 /* Sources */,
 				65C492781CFB866400E47F83 /* Frameworks */,
 				65C492791CFB866400E47F83 /* Resources */,
-				DB4630B44AF087BDED667C7C /* 📦 Copy Pods Resources */,
+				DB4630B44AF087BDED667C7C /* [CP] Copy Pods Resources */,
+				4533B685D0F2097EF9DFB4F5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -571,13 +635,16 @@
 					65C492591CFB866400E47F83 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 4HWQ95CTCF;
+						LastSwiftMigration = 0800;
 					};
 					65C4926F1CFB866400E47F83 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 65C492591CFB866400E47F83;
 					};
 					65C4927A1CFB866400E47F83 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 65C492591CFB866400E47F83;
 					};
 				};
@@ -630,14 +697,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0509D67A73C10C9E9EF1482F /* 📦 Embed Pods Frameworks */ = {
+		0509D67A73C10C9E9EF1482F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -645,14 +712,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurillaRecipesTests/Pods-ChurillaRecipesTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		47E65D6ED572E5DAAAC8DFF1 /* 📦 Copy Pods Resources */ = {
+		4533B685D0F2097EF9DFB4F5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurillaRecipesUITests/Pods-ChurillaRecipesUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47E65D6ED572E5DAAAC8DFF1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,14 +742,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurillaRecipesTests/Pods-ChurillaRecipesTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9549EA8BDC7BCAE7C905F1C4 /* 📦 Embed Pods Frameworks */ = {
+		9549EA8BDC7BCAE7C905F1C4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,29 +757,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurillaRecipes/Pods-ChurillaRecipes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9F65D32C5E0A49E1A20C8C92 /* 📦 Check Pods Manifest.lock */ = {
+		9F65D32C5E0A49E1A20C8C92 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A57D4AC442457BDB024742DE /* 📦 Copy Pods Resources */ = {
+		A57D4AC442457BDB024742DE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,44 +787,44 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChurillaRecipes/Pods-ChurillaRecipes-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BAC65D36A771F54874E253E3 /* 📦 Check Pods Manifest.lock */ = {
+		BAC65D36A771F54874E253E3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		BB8211B08F0A78DD66BA3E34 /* 📦 Check Pods Manifest.lock */ = {
+		BB8211B08F0A78DD66BA3E34 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		DB4630B44AF087BDED667C7C /* 📦 Copy Pods Resources */ = {
+		DB4630B44AF087BDED667C7C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +843,7 @@
 				654C1CD91D3FBBBE00E6DEDA /* RecipeCollectionViewController.swift in Sources */,
 				A558684E1D09C94F00838E5E /* StoryboardIdentifiable.swift in Sources */,
 				A55868461D09C3D700838E5E /* AddRecipeViewController.swift in Sources */,
+				65F489111D732FA10038A180 /* Archivable.swift in Sources */,
 				651997901D1C3501004C2B31 /* RecipeDetailViewController.swift in Sources */,
 				657834961D1C3F6600C0E912 /* Array+JSON.swift in Sources */,
 				651997871D1C32DE004C2B31 /* ViewModelBindable.swift in Sources */,
@@ -769,15 +852,20 @@
 				65AB3B541D2153D0004FB9A8 /* ImageCellViewModel.swift in Sources */,
 				A521C3D01D0B369000A99623 /* APIProtocol.swift in Sources */,
 				657834981D1C406A00C0E912 /* DataSourceBinding.swift in Sources */,
+				65A46C181D69D7D5005A0A53 /* RecipeCollectionViewCell.swift in Sources */,
 				65D416721D1DABAD00FA4F1D /* String+Format.swift in Sources */,
 				659CF0401CFD1D56007DAA3F /* RecipeStore.swift in Sources */,
+				656572171D731B7900B69FA7 /* FileManager.swift in Sources */,
 				65D4166B1D1D772700FA4F1D /* Result+JSON.swift in Sources */,
+				653B72091DA063DC001021BF /* AddRecipePicturesViewModel.swift in Sources */,
 				653BF4B31D1EAB09000EF13D /* InstructionsViewController.swift in Sources */,
 				653BF4B11D1EAAED000EF13D /* FinishedPicturesViewController.swift in Sources */,
 				657834A51D1C6F7700C0E912 /* RecipeCell.swift in Sources */,
 				6519978E1D1C34E9004C2B31 /* RecipesViewController.swift in Sources */,
+				65F489151D7332F50038A180 /* ConfigRouter.swift in Sources */,
 				A5CE72A71CFF666F0059F010 /* APIManager.swift in Sources */,
 				A5EF72D81D12F787008FE0E4 /* AssertUnwrap.swift in Sources */,
+				656572141D73021800B69FA7 /* Observable.swift in Sources */,
 				65D416691D1C828400FA4F1D /* Camera.swift in Sources */,
 				A558684C1D09C74500838E5E /* Storyboard.swift in Sources */,
 				657834921D1C35DD00C0E912 /* RecipesViewModel.swift in Sources */,
@@ -791,16 +879,23 @@
 				653BF4B51D1EAC8C000EF13D /* ImageCell.swift in Sources */,
 				65D4166E1D1DA97500FA4F1D /* ImageUploader.swift in Sources */,
 				A5EF72CF1D12F29D008FE0E4 /* ViewModel.swift in Sources */,
+				65F4890F1D7325970038A180 /* Config.swift in Sources */,
 				A5EF72D11D12F419008FE0E4 /* AddRecipeViewModel.swift in Sources */,
 				A5CE72A91CFF67B50059F010 /* RecipeRouter.swift in Sources */,
 				65BC42F51CFCBEF3006C270C /* ChurillaViewController.swift in Sources */,
 				6578349B1D1C417600C0E912 /* RecipeCellViewModel.swift in Sources */,
 				65D416701D1DAA7F00FA4F1D /* Amazon.swift in Sources */,
+				653B72071DA0637E001021BF /* AddRecipePicturesViewController.swift in Sources */,
 				A521C3F41D0B421300A99623 /* Store.swift in Sources */,
+				653B720C1DA15E00001021BF /* AddFinishedPicturesViewController.swift in Sources */,
+				65F489131D7332A00038A180 /* ConfigStore.swift in Sources */,
 				651997851D1C32BA004C2B31 /* Connected.swift in Sources */,
+				653B720E1DA15E55001021BF /* AddFinishedPicturesViewModel.swift in Sources */,
+				656572111D7300BE00B69FA7 /* UIViewExtensions.swift in Sources */,
 				A55868421D07433300838E5E /* Object.swift in Sources */,
 				6519978A1D1C341B004C2B31 /* Router.swift in Sources */,
 				65AB3B521D2151EA004FB9A8 /* SegueIdentifiable.swift in Sources */,
+				653B72101DA1619D001021BF /* RecipeFlyweight.swift in Sources */,
 				A521C3C81D0B301900A99623 /* AppInjector.swift in Sources */,
 				A521C3CE1D0B335E00A99623 /* SplitControllerManagerProtocol.swift in Sources */,
 				65C4925E1CFB866400E47F83 /* AppDelegate.swift in Sources */,
@@ -957,6 +1052,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipes;
 				PRODUCT_NAME = Churilla;
 				PROVISIONING_PROFILE = "1398f31f-401c-48a1-9bed-45e95f025da1";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -971,6 +1067,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipes;
 				PRODUCT_NAME = Churilla;
 				PROVISIONING_PROFILE = "1398f31f-401c-48a1-9bed-45e95f025da1";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -983,7 +1080,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChurillaRecipes.app/ChurillaRecipes";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Churilla.app/Churilla";
 			};
 			name = Debug;
 		};
@@ -996,7 +1094,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChurillaRecipes.app/ChurillaRecipes";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Churilla.app/Churilla";
 			};
 			name = Release;
 		};
@@ -1008,6 +1107,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipesUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ChurillaRecipes;
 			};
 			name = Debug;
@@ -1020,6 +1120,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scott.ChurillaRecipesUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ChurillaRecipes;
 			};
 			name = Release;

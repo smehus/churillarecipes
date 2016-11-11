@@ -20,11 +20,11 @@ internal struct Recipe: Object {
     init(json: JSON) throws {
         print("OBJECT BEING MAPPED\(json)")
         guard let title: String = json["title"].string,
-            description: String = json["description"].string,
-            urls: [JSON] = json["imageUrl"].array,
-            _id: String = json["_id"].string
+            let description: String = json["description"].string,
+            let urls: [JSON] = json["imageUrl"].array,
+            let _id: String = json["_id"].string
         else {
-            throw ObjectError.MappingError
+            throw ObjectError.mappingError
         }
         
         self.objectId = _id
@@ -64,12 +64,13 @@ internal struct Recipe: Object {
     func toJSON() -> APIParams {
         
         var params: [String: AnyObject] = [:]
-        params["title"] = title
-        params["description"] = description
-        params["imageUrls"] = recipeImages.map {
+        params["title"] = title as AnyObject?
+        params["description"] = description as AnyObject?
+        let imageurls: [String] = recipeImages.map {
             return $0.stringValue
         }
         
+        params["imageUrls"] = imageurls as! AnyObject
         return params
     }
 }

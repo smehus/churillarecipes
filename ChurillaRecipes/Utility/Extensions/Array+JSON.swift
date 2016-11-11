@@ -14,7 +14,7 @@ extension Array: Object {
     init(json: JSON) throws {
         
         guard let ElementType = Element.self as? Object.Type else {
-            throw ObjectError.MappingError
+            throw ObjectError.mappingError
         }
         
         var values = [Element]()
@@ -24,7 +24,7 @@ extension Array: Object {
                     values.append(object)
                 }
             } catch {
-                throw ObjectError.MappingError
+                throw ObjectError.mappingError
             }
         }
         

@@ -10,11 +10,11 @@ import Foundation
 
 internal struct ImageCellViewModel: CellViewModel {
     
-    var imageUrl: NSURL {
+    var imageUrl: URL? {
         return image.imageURL
     }
     
-    private let image: Image
+    fileprivate let image: Image
     typealias ObjectType = Image
     init(object: ObjectType) {
         self.image = object

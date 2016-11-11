@@ -22,15 +22,19 @@ internal struct AppInjector {
         return RecipeStore(environment: apiManager())
     }
     
-    func recipesViewModel() -> RecipesViewModel {
-        return RecipesViewModel(store: recipeStore())
+    func recipesViewModel(_ download: Observable<Bool>) -> RecipesViewModel {
+        return RecipesViewModel(store: recipeStore(), configDownload: download)
     }
     
     func recipeDetailViewModel() -> RecipeDetailViewModel {
         return RecipeDetailViewModel(store: recipeStore())
     }
     
-    private func imageUploader() -> Amazon {
+    func configStore() -> ConfigStore {
+        return ConfigStore(environment: apiManager())
+    }
+    
+    fileprivate func imageUploader() -> Amazon {
         return Amazon()
     }
     
