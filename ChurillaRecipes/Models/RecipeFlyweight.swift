@@ -13,6 +13,8 @@ internal final class RecipeFlyweight {
     
     var title: String?
     var description: String?
+    var recipeImages = [Image]()
+    var finishedImages = [Image]()
     
     init(title: String, description: String) {
         self.title = title

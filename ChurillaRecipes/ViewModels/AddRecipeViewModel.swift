@@ -12,7 +12,6 @@ import Alamofire
 internal final class AddRecipeViewModel: ViewModel {
     typealias StoreType = RecipeStore
     
-    var recipeImages = [String]()
     var titleString = ""
     var descriptionString = ""
     
@@ -37,57 +36,9 @@ internal final class AddRecipeViewModel: ViewModel {
         self.uploader = nil
     }
     
-    func saveRecipe(_ completion: @escaping () -> Void, failed: @escaping (_ err: ObjectError) -> Void) {
-        
-        guard recipeImages.count > 0 && titleString.characters.count > 0 else {
-            failed(ObjectError.validationError(error: "Please fill out title and add a picture"))
-            return
-        }
-        
-        self.uploadRecipe(recipeImages, completion: completion, failed: failed)
-    }
-    
     func nextViewModel() -> AddRecipePicturesViewModel {
         guard let uploader = self.uploader else { fatalError() }
         return AddRecipePicturesViewModel(store: store, uploader: uploader, recipe: RecipeFlyweight(title: titleString, description: descriptionString))
     }
     
-    fileprivate func uploadRecipe(_ urls: [String], completion: @escaping () -> Void, failed: @escaping (_ err: ObjectError) -> Void) {
-        let params = createRecipeObject(titleString, description: descriptionString, imageURLs: urls)
-        store.addRecipe(params) { (result) in
-            switch result {
-            case .success(_):
-                completion()
-            case let .failure(err):
-                break
-            }
-        }
-    }
-    
-    fileprivate func createRecipeObject(_ title: String, description: String, imageURLs: [String]) -> Recipe {
-        let images = imageURLs.map {
-            return Image(imageUrlString: $0)
-        }
-        return Recipe(title: title, description: description, images: images)
-    }
-    
 }
-
-extension AddRecipeViewModel: DataSourceBinding {
-    typealias CellViewModel = ImageCellViewModel
-    
-    var numberOfSections: Int {
-        return 1
-    }
-    
-    func numberOfRowsForSection(_ section: Int) -> Int {
-        return recipeImages.count
-    }
-    
-    func viewModelForIndexPath(_ indexPath: IndexPath) -> CellViewModel {
-        return ImageCellViewModel(object: Image(imageUrlString: recipeImages[indexPath.row]))
-    }
-}
-
-
-

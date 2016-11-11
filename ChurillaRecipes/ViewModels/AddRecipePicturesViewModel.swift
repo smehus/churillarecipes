@@ -14,8 +14,7 @@ internal final class AddRecipePicturesViewModel: ViewModel {
     
     fileprivate let store: RecipeStore
     fileprivate let uploader: ImageUploader?
-    fileprivate var recipeImages = [String]()
-    fileprivate var recipe: RecipeFlyweight?
+    fileprivate var recipe: RecipeFlyweight
     
     init(store: StoreType, uploader: ImageUploader, recipe: RecipeFlyweight) {
         self.store = store
@@ -24,19 +23,18 @@ internal final class AddRecipePicturesViewModel: ViewModel {
     }
     
     init(store: StoreType) {
-        self.store = store
-        self.uploader = nil
+        fatalError()
     }
     
     func nextViewModel() -> AddFinishedPicturesViewModel {
         guard let uploader = self.uploader else { fatalError() }
-        return AddFinishedPicturesViewModel(store: store, uploader: uploader)
+        return AddFinishedPicturesViewModel(store: store, uploader: uploader, recipe: recipe)
     }
     
     func uploadImage(_ image: UIImage, completed: @escaping (Result<()>) -> Void) {
-        guard let recipe = recipe, let title = recipe.title else { return }
-        uploader?.uploadImage(image, title: title + "\(recipeImages.count)", completion: { [weak self] (url) in
-            self?.recipeImages.append(url)
+        guard let title = recipe.title else { return }
+        uploader?.uploadImage(image, title: title + "\(recipe.recipeImages.count)", completion: { [weak self] (url) in
+            self?.recipe.recipeImages.append(Image(imageUrlString: url))
             completed(Result.success())
             }, failure: { (reason) in
                 completed(Result.failure(ObjectError.customError(error: reason)))
@@ -53,10 +51,10 @@ extension AddRecipePicturesViewModel: DataSourceBinding {
     }
     
     func numberOfRowsForSection(_ section: Int) -> Int {
-        return recipeImages.count
+        return recipe.recipeImages.count
     }
     
     func viewModelForIndexPath(_ indexPath: IndexPath) -> CellViewModel {
-        return ImageCellViewModel(object: Image(imageUrlString: recipeImages[indexPath.row]))
+        return ImageCellViewModel(object: recipe.recipeImages[indexPath.row])
     }
 }
