@@ -6,7 +6,9 @@
 //  Copyright © 2016 Scott Mehus. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import SwiftyJSON
+import Alamofire
 
 internal final class AddFinishedPicturesViewModel: ViewModel {
     typealias StoreType = RecipeStore
@@ -25,7 +27,20 @@ internal final class AddFinishedPicturesViewModel: ViewModel {
         fatalError()
     }
     
-    
+    /// Upload image as soon as image is picked
+    ///
+    /// - parameter image:     UIImage object
+    /// - parameter completed: completion block
+    func uploadImage(_ image: UIImage, completed: @escaping (Result<()>) -> Void) {
+        guard let title = recipe.title else { return }
+        uploader?.uploadImage(image, title: title + "\(recipe.finishedImages.count)", completion: { [weak self] (url) in
+            self?.recipe.finishedImages.append(Image(imageUrlString: url))
+            completed(Result.success())
+            }, failure: { (reason) in
+                completed(Result.failure(ObjectError.customError(error: reason)))
+        })
+    }
+
     fileprivate func uploadRecipe(_ urls: [String], completion: @escaping () -> Void, failed: @escaping (_ err: ObjectError) -> Void) {
         store.addRecipe(recipe) { (result) in
             switch result {
@@ -36,11 +51,21 @@ internal final class AddFinishedPicturesViewModel: ViewModel {
             }
         }
     }
+}
+
+extension AddFinishedPicturesViewModel: DataSourceBinding {
     
-    fileprivate func createRecipeObject(_ title: String, description: String, imageURLs: [String]) -> Recipe {
-        let images = imageURLs.map {
-            return Image(imageUrlString: $0)
-        }
-        return Recipe(title: title, description: description, images: images)
+    typealias CellViewModel = ImageCellViewModel
+    
+    var numberOfSections: Int {
+        return 1
+    }
+    
+    func numberOfRowsForSection(_ section: Int) -> Int {
+        return recipe.recipeImages.count
+    }
+    
+    func viewModelForIndexPath(_ indexPath: IndexPath) -> CellViewModel {
+        return ImageCellViewModel(object: recipe.recipeImages[indexPath.row])
     }
 }
