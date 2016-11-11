@@ -31,6 +31,11 @@ internal final class AddRecipePicturesViewModel: ViewModel {
         return AddFinishedPicturesViewModel(store: store, uploader: uploader, recipe: recipe)
     }
     
+    
+    /// Upload image as soon as image is picked
+    ///
+    /// - parameter image:     UIImage object
+    /// - parameter completed: completion block
     func uploadImage(_ image: UIImage, completed: @escaping (Result<()>) -> Void) {
         guard let title = recipe.title else { return }
         uploader?.uploadImage(image, title: title + "\(recipe.recipeImages.count)", completion: { [weak self] (url) in
