@@ -9,7 +9,10 @@
 import Foundation
 import SwiftyJSON
 
-internal struct Recipe: Object {
+internal protocol RecipeBlueprint: Object {
+}
+
+internal struct Recipe: RecipeBlueprint {
     
     let objectId: String
     let title: String

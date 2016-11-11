@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 // Used for passing back and forth while adding a recipe
-internal final class RecipeFlyweight {
+internal final class RecipeFlyweight: RecipeBlueprint {
     
     var title: String?
     var description: String?
@@ -21,4 +22,11 @@ internal final class RecipeFlyweight {
         self.description = description
     }
     
+    init(json: JSON) throws {
+        throw ObjectError.customError(error: "blah")
+    }
+ 
+    func toJSON() -> APIParams {
+        return [:]
+    }
 }

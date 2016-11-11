@@ -12,7 +12,7 @@ import Alamofire
 internal enum RecipeEndPoint {
     case debugAll
     case allRecipes
-    case addRecipe(recipe: Recipe)
+    case addRecipe(recipe: RecipeBlueprint)
     case getRecipe(name: String)
     case addFinishedImage(recipe: Recipe, url: String)
     

@@ -40,7 +40,7 @@ internal struct RecipeStore: Store {
         return true
     }
     
-    func addRecipe(_ recipe: Recipe, completion: @escaping (Result<()>) -> Void) {
+    func addRecipe(_ recipe: RecipeBlueprint, completion: @escaping (Result<()>) -> Void) {
         let router = RecipeRouter(endPoint: .addRecipe(recipe: recipe))
         let _ = apiEnv.executeRequest(router) { result in
             

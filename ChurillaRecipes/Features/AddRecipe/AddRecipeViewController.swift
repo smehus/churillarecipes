@@ -55,22 +55,6 @@ internal final class AddRecipeViewController: UIViewController, ChurillaViewCont
     @objc fileprivate func nextStep() {
         performSegue(withIdentifier: Identifiers.RecipePictures.rawValue, sender: nil)
     }
-    
-//    @objc private func saveRecipe() {
-//        viewModel.saveRecipe({ [weak self] _ in
-//            self?.reloadTable!()
-//            self?.showAlertWithDismiss("Success!", message: "You Did It!")
-//        }) { [weak self] (err) in
-//                
-//                switch err {
-//                case .ValidationError:
-//                    self?.showAlert("Oops", message: err.userFacingDescription)
-//                default:
-//                    self?.showAlertWithDismiss("Ruh Roh", message: "You Failed :(")
-//                }
-//        }
-//    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
