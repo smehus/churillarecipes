@@ -40,13 +40,21 @@ internal final class AddFinishedPicturesViewModel: ViewModel {
                 completed(Result.failure(ObjectError.customError(error: reason)))
         })
     }
+    
+    func save(completion: @escaping (Bool) -> Void) {
+        uploadRecipe(completion: { 
+                completion(true)
+            }) { (_) in
+                completion(false)
+        }
+    }
 
-    fileprivate func uploadRecipe(_ urls: [String], completion: @escaping () -> Void, failed: @escaping (_ err: ObjectError) -> Void) {
+    fileprivate func uploadRecipe(completion: @escaping () -> Void, failed: @escaping (_ err: ObjectError) -> Void) {
         store.addRecipe(recipe) { (result) in
             switch result {
             case .success(_):
                 completion()
-            case let .failure(err):
+            case let .failure(_):
                 break
             }
         }

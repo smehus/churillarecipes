@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 // Used for passing back and forth while adding a recipe
 internal final class RecipeFlyweight: RecipeBlueprint {
@@ -27,6 +28,20 @@ internal final class RecipeFlyweight: RecipeBlueprint {
     }
  
     func toJSON() -> APIParams {
-        return [:]
+        
+        var params: Parameters = [:]
+        params["title"] = title ?? ""
+        params["description"] = description ?? ""
+        let images: [String] = recipeImages.map {
+            return $0.stringValue
+        }
+        
+        let finished: [String] = finishedImages.map {
+            return $0.stringValue
+        }
+        
+        params["recipeImages"] = images
+        params["finishedImage"] = finished
+        return params
     }
 }

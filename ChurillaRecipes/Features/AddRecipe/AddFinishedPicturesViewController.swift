@@ -52,7 +52,13 @@ internal final class AddFinishedPicturesViewController: UIViewController, Churil
     
 
     @IBAction fileprivate func saveButtonPressed(_ sender: AnyObject) {
-        
+        viewModel.save { (worked) in
+            if worked {
+                self.showAlert("SUCCESS", message: nil)
+            } else {
+                self.showAlert("FAILURE", message: nil)
+            }
+        }
     }
     
     fileprivate func setupCollectionView() {
