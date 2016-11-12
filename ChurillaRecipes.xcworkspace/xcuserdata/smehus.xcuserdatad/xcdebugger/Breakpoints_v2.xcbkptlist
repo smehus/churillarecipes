@@ -13,5 +13,117 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChurillaRecipes/Models/RecipeFlyweight.swift"
+            timestampString = "500601700.102384"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "toJSON()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChurillaRecipes/ViewModels/AddFinishedPicturesViewModel.swift"
+            timestampString = "500601724.528509"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "uploadRecipe(completion:failed:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Churilla.AddFinishedPicturesViewModel.(uploadRecipe in _4318959BC93BD25BF52388942578970C) (completion : () -&gt; (), failed : (Churilla.ObjectError) -&gt; ()) -&gt; ()"
+                  moduleName = "Churilla"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/smehus/Documents/SwiftTuts/ChurillaRecipes/ChurillaRecipes/ViewModels/AddFinishedPicturesViewModel.swift"
+                  timestampString = "500601865.75414"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Churilla.AddFinishedPicturesViewModel.((uploadRecipe in _4318959BC93BD25BF52388942578970C) (completion : () -&gt; (), failed : (Churilla.ObjectError) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Churilla"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/smehus/Documents/SwiftTuts/ChurillaRecipes/ChurillaRecipes/ViewModels/AddFinishedPicturesViewModel.swift"
+                  timestampString = "500601865.758235"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChurillaRecipes/Utility/Networking/Router.swift"
+            timestampString = "500601774.843373"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "asURLRequest()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Churilla):Churilla.Router.asURLRequest () throws -&gt; Foundation.URLRequest"
+                  moduleName = "Churilla"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/smehus/Documents/SwiftTuts/ChurillaRecipes/ChurillaRecipes/Utility/Networking/Router.swift"
+                  timestampString = "500601865.766359"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "879">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Churilla):Churilla.Router.asURLRequest () throws -&gt; Foundation.URLRequest"
+                  moduleName = "Churilla"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/smehus/Documents/SwiftTuts/ChurillaRecipes/ChurillaRecipes/Utility/Networking/Router.swift"
+                  timestampString = "500601865.770739"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "1634">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

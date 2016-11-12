@@ -33,7 +33,7 @@ internal final class AddFinishedPicturesViewModel: ViewModel {
     /// - parameter completed: completion block
     func uploadImage(_ image: UIImage, completed: @escaping (Result<()>) -> Void) {
         guard let title = recipe.title else { return }
-        uploader?.uploadImage(image, title: title + "\(recipe.finishedImages.count)", completion: { [weak self] (url) in
+        uploader?.uploadImage(image, title: title + "finished_\(recipe.finishedImages.count)", completion: { [weak self] (url) in
             self?.recipe.finishedImages.append(Image(imageUrlString: url))
             completed(Result.success())
             }, failure: { (reason) in

@@ -41,7 +41,7 @@ internal final class RecipeFlyweight: RecipeBlueprint {
         }
         
         params["recipeImages"] = images
-        params["finishedImage"] = finished
+        params["finishedImages"] = finished
         return params
     }
 }

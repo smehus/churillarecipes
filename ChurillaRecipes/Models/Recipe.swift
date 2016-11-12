@@ -24,7 +24,6 @@ internal struct Recipe: RecipeBlueprint {
         print("OBJECT BEING MAPPED\(json)")
         guard let title: String = json["title"].string,
             let description: String = json["description"].string,
-            let urls: [JSON] = json["imageUrl"].array,
             let _id: String = json["_id"].string
         else {
             throw ObjectError.mappingError
@@ -33,9 +32,21 @@ internal struct Recipe: RecipeBlueprint {
         self.objectId = _id
         self.title = title
         self.description = description
-        self.recipeImages = urls.map {
-            return Image(imageUrlString: $0.string ?? "")
+        let legacy: [JSON]? = json["imageUrl"].array
+        let recipes: [JSON]? = json["recipeImages"].array
+        
+        if let urls = legacy {
+            self.recipeImages = urls.map {
+                return Image(imageUrlString: $0.string ?? "")
+            }
+        } else if let images = recipes {
+            self.recipeImages = images.map {
+                return Image(imageUrlString: $0.string ?? "")
+            }
+        } else {
+            self.recipeImages = [Image]()
         }
+
         
         if let imageArray: [JSON] = json["finishedImageUrls"].array {
             self.finishedImages = imageArray.map {
